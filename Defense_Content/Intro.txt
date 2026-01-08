@@ -1,0 +1,67 @@
+Intro:
+----
+2-layer ccless auth sys Contactless
+Face & Voice
+SOTA Models (state-of-the-art)
+----
+Traditional authentication (passwords, PINs, tokens) is vulnerable to phishing, breaches, and hygiene risks (e.g., contact-based biometrics).
+Reliable auth sys with anti spoof measures 
+#####No mention Of MVP
+
+---
+- Hygiene Concerns: Contact-based systems risk germ transmission. Useful in Covid-19 Like Pandemic Situations 
+- Lack of Accessibility: High-security systems are often expensive and proprietary.
+
+ Overview
+- Growing need for robust identity verification; traditional /////#########NOOOOand single-factor biometrics are insufficient.
+- Multimodal biometrics (face + voice) significantly increase security and resilience against spoofing.
+
+---Bullet Points Are a Must!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Abstract
+- Traditional authentication (passwords, PINs, tokens) is vulnerable to phishing, breaches, and hygiene risks (e.g., contact-based biometrics).
+- Proposed solution: Two-Layer Contactless Physical Authentication System using face + voice biometrics for secure, touch-free identity verification.
+- Applications: Access control, attendance tracking, secure logins.
+- Core tech: ArcFace (facial embeddings) + ECAPA-TDNN (voice embeddings), fused via a decision engine.
+- Goal: Build a Minimum Viable Product (MVP) on cost-effective embedded hardware for practical, widespread use.
+
+---
+
+ Introduction
+ Overview
+- Growing need for robust identity verification; traditional and single-factor biometrics are insufficient.
+- Multimodal biometrics (face + voice) significantly increase security and resilience against spoofing.
+
+ Problem Statement/Objectives/Goals
+- Security Vulnerabilities: Passwords/PINs easily compromised; single biometrics can be spoofed.
+- Hygiene Concerns: Contact-based systems risk germ transmission.
+- Lack of Accessibility: High-security systems are often expensive and proprietary.
+
+Project Objectives:
+1. Investigate state-of-the-art deep learning models for facial recognition and speaker verification.
+2. Develop modular pipelines for face detection/embedding and voice embedding.
+3. Integrate pipelines with a decision fusion engine.
+4. Implement anti-spoofing (liveness detection) to prevent photo/recording attacks.
+5. Build an MVP on cost-effective embedded hardware.
+6. Evaluate performance using biometric metrics (FAR, FRR).
+
+ Deliverables
+1. Working Proof-of-Concept Application: Functional software demonstrating two-factor authentication on MVP hardware.
+2. Comprehensive FYP Final Report: Detailed documentation of background, methodology, design, testing, and results.
+3. Source Code Repository: Documented Git repo with all code and integration logic.
+4. Final Presentation & Live Demo: Summary presentation and live prototype demonstration.
