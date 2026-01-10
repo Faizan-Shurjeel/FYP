@@ -1,0 +1,225 @@
+We have to make few changes:
+
+"The development and deployment of a practical contactless authentication system face several
+
+distinct challenges that this project aims to solve:
+
+1. Inflexibility of Single-Factor Systems: The majority of biometric systems rely on a
+
+single modality (e.g., only face or only voice). This creates a single point of failure; if
+
+environmental conditions are not ideal for that one modality (e.g., poor lighting for face
+
+recognition, high ambient noise for voice recognition), the entire system fails.
+
+2. The Edge Deployment Gap: State-of-the-art deep learning models for face and voice
+
+recognition are computationally intensive and possess large memory footprints, making
+
+them unsuitable for direct deployment on low-cost hardware such as a Raspberry Pi
+
+without severe performance degradation.
+
+3. Privacy and Latency of Cloud-Based Solutions: Offloading computation to the cloud
+
+introduces significant latency due to network round-trip times, making real-time authentication difficult. More critically, it requires transmitting sensitive, immutable biometric
+
+data over the internet, creating a major privacy and security risk.
+
+4. Hygiene and Public Health Concerns: In a post-pandemic world, shared-contact devices
+
+like fingerprint scanners or keypads are increasingly viewed as a public health risk. There
+
+is a pressing need for authentication solutions that require zero physical contact."
+
+
+
+This should be the problem statement, Replace problem statement with the above. These Statements are a must, other than that if you see any other statements in addition to these, you may add. But these are a dealbreaker.
+
+
+
+-----
+
+
+
+"• Out of Scope: Training models from scratch (transfer learning or pre-trained weights will
+
+be used); defense against advanced 3D spoofing or deepfakes; commercial-grade chassis
+
+design."
+
+
+
+We don't need to mention this in Out Of scope, Add something else or remove this section completely.
+
+
+
+-----
+
+
+
+"• SDG 3: Good Health and Well-being: By creating a completely contactless authentication system, the project promotes hygiene and helps reduce the transmission of infectious
+
+diseases associated with shared-surface devices.
+
+• SDG 9: Industry, Innovation, and Infrastructure: This project is a direct contribution
+
+to innovation. It leverages cutting-edge AI and edge computing to build resilient and
+
+secure infrastructure access control. By using affordable, off-the-shelf hardware, it fosters
+
+inclusive and sustainable technological development.
+
+• SDG 11: Sustainable Cities and Communities: A key aspect of a sustainable community
+
+is safety and security. This project provides an accessible technology that can be used to
+
+enhance security in community spaces, residential buildings, and public offices without
+
+compromising user convenience or privacy"
+
+
+
+SDG 9 & 3  were added before, but add 11 too.
+
+
+
+-----
+
+"2.1.1 Facial Recognition Taxonomy
+
+
+
+Architectures (The ”Body”)
+
+Loss Functions (The ”Teacher”)
+
+Frameworks/Toolkits (The ”Toolbox”)
+
+Note:
+
+One can train a ResNet architecture using ArcFace loss."
+
+
+
+What type of childish wording are these: `The Body`, `The Teacher`, `The toolbox`
+
+We're writing a thesis, not a nursery kindergarten book.
+
+
+
+------
+
+"Understanding the Visual Pipeline
+
+Step 1: Face Detection (The Locator
+
+ Step 2: Face Recognition (The Identifier)"
+
+Same as before, childish terms.
+
+
+
+----
+
+"Functional Requirements
+The system must provide the following functionalities:
+• FR1: The system shall allow an administrator to enroll a new user by capturing their
+facial image and storing the corresponding biometric template.
+• FR2: The system shall allow an administrator to enroll a new user by capturing their
+voice sample and storing the corresponding voiceprint.
+10
+FYP Thesis COMSATS University Islamabad
+• FR3: The system shall be able to capture a live facial image, perform a liveness check,
+and verify it against the enrolled database.
+• FR4: The system shall be able to capture a live audio sample and verify it against the
+enrolled database.
+• FR5: The system shall grant access if either the face verification (FR3) OR the voice
+verification (FR4) is successful.
+• FR6: All enrolled biometric templates shall be stored securely on the local device"
+
+We have to add these.
+
+"3.2.2 Non-Functional Requirements
+The system must adhere to the following quality attributes and constraints:
+• NFR1 (Performance): The end-to-end authentication process shall complete in under 2.0
+seconds.
+• NFR2 (Security & Privacy): All biometric processing and template storage must occur
+on the local edge device.
+• NFR3 (Usability): The authentication process for both modalities must be fully contactless.
+• NFR4 (Accuracy): Each biometric modality shall achieve a target verification accuracy
+of over 95% on the custom test dataset.
+• NFR5 (Hardware Constraint): The entire system must function on a Raspberry Pi 4
+(8GB model)."
+
+These too
+
+---------
+"Phase 1: Face Detector Comparison
+add MTCNN in the table"
+The table under this heading has false/inaccurate value, The following is the corrected one:
+"InceptionResNetV1 TensorFlow / FaceNet ∼90 MB not 90 something 300MB"
+
+---------
+
+Also For voice add these comparisons too:
+
+
+## Category A: State-of-the-Art & High-Complexity Models (Accuracy Benchmarks)
+
+These models define the upper limit of accuracy. We study them to understand what makes them so effective, and potentially borrow concepts for more efficient models.
+
+| Model | Architecture Breakdown | Strengths | Edge Feasibility Challenges |
+|-----|----------------------|----------|-----------------------------|
+| CRET / ECAPA-TDNN / Transformers | (As previously discussed) | Highest published accuracy on academic benchmarks. | Extremely high computational and memory requirements. Not a direct path to the edge without significant compromises. |
+| Res2Net | Multi-Scale Residual Network: A variant of ResNet where a single residual block is replaced with a block that processes features at multiple scales. | Excellent at capturing features of varying importance within a single layer. Very strong accuracy. | Higher complexity and memory usage than a standard ResNet of equivalent depth. |
+| D-TDNN | Deep Time Delay Neural Network: Stacks more TDNN layers to create a deeper network, often with residual connections. | Improved accuracy over the original x-vector TDNN by leveraging greater network depth. | Deeper networks lead to higher latency and memory usage. Risk of diminishing returns. |
+
+## Category B: Efficient & Balanced 2D-CNNs (Primary Candidates)
+
+These models treat an audio spectrogram as an image and are our strongest candidates due to the maturity of 2D-CNN optimization tools.
+
+| Model | Architecture Breakdown | Strengths | Edge Feasibility Advantages |
+|-----|----------------------|----------|-----------------------------|
+| ResNet / MobileNet / GhostNet | (As previously discussed) | Excellent balance of accuracy and performance, with a wide range of available sizes and pre-trained weights. | Proven track record for edge deployment across many domains. The safest starting point. |
+| EfficientNet | Compound Scaled CNN: A family of models where the depth, width, and input resolution are scaled up in a principled, balanced way. | Best-in-class accuracy-to-parameter ratio. A B0 or B1 version can outperform a larger ResNet with fewer resources. | Excellent candidate for quantization. The scaling principle allows you to pick a precise trade-off point. |
+| ShuffleNet V2 | Channel Shuffle & Group Convolutions: An architecture designed to minimize memory access cost, a key bottleneck on edge hardware. | Specifically designed for low-power devices. Can be faster than MobileNetV2 at similar accuracy levels. | A very strong contender for CPU-bound inference tasks. |
+
+## Category C: Efficient 1D Convolutional Models (Direct Audio Processing)
+
+This is a powerful category that works on 1D audio representations (like raw waveforms or MFCCs). They are often more naturally suited to audio and can be very lightweight.
+
+| Model | Architecture Breakdown | Strengths | Edge Feasibility Advantages |
+|-----|----------------------|----------|-----------------------------|
+| x-vector | TDNN + Statistics Pooling: The foundational architecture for modern speaker recognition. A stack of 1D convolutions (TDNN) captures temporal features, which are then aggregated across time into a single vector. | Simpler and lighter than its successor, ECAPA-TDNN. A very strong and well-understood baseline. | Excellent starting point. Likely to meet real-time goals on a Pi with good accuracy. Many open-source implementations. |
+| RawNet2 | 1D-CNN on Raw Waveform: A deep stack of 1D convolutions, including residual connections and GRU layers, that learns directly from the raw audio signal. | No pre-processing needed (like MFCCs), simplifying the entire pipeline and saving CPU cycles. | Can be more robust as it lets the network learn the best possible filters, rather than being fixed to a pre-defined feature type. |
+| SincNet | Parametric 1D-CNN: A novel 1D-CNN where the first layer's filters are not learned freely but are parameterized as sinc functions, forcing them to become meaningful band-pass filters. | Extremely efficient and fast. Converges much faster with less data. The first layer is interpretable and powerful. | A prime candidate for the edge. Its inherent efficiency makes it ideal for resource-constrained devices. |
+
+## Category D: Hybrid Architectures (CNN + RNN)
+
+These models combine the feature extraction power of CNNs with the sequence-handling capabilities of Recurrent Neural Networks (RNNs).
+
+| Model | Architecture Breakdown | Strengths | Edge Feasibility Advantages |
+|-----|----------------------|----------|-----------------------------|
+| DeepSpeaker (VGG-Vox) | 2D-CNN + RNN/Aggregation: Uses a 2D-CNN (like VGG or ResNet) on spectrograms to extract frame-level features, which are then passed to an RNN (GRU/LSTM) or an aggregation layer to create the final utterance-level embedding. | Intuitive architecture that explicitly separates local feature extraction (CNN) and temporal aggregation (RNN). | RNNs can be slow to run on standard hardware due to their sequential nature. However, a lightweight CNN with a simple GRU layer can be a good balance. |
+
+## Category E: Self-Supervised Learning (SSL) Models (Advanced/Future-Proof)
+
+These are massive "foundation models" trained on enormous unlabeled audio datasets. They are generally too large to deploy directly, but they offer a powerful alternative approach.
+
+| Model | Architecture Breakdown | Strengths | Edge Feasibility Strategy |
+|-----|----------------------|----------|---------------------------|
+| Wav2Vec 2.0 / HuBERT / WavLM | Transformer-based: Large Transformer networks trained to learn general-purpose representations of audio. | Incredibly powerful feature extractors. They learn the fundamental "language" of audio and are very robust to noise and domain shifts. | Not deployed directly. The strategy is "Feature Extraction + Lightweight Head." You use the massive SSL model (on a server, or a heavily optimized version on the edge) to convert audio into high-quality feature vectors, and then train a tiny, fast classification model (e.g., logistic regression or a small neural net) on those features. |
+
+## Engineering Summary & Refined Decision Matrix
+
+Let's consolidate this into a decision-making table to help select our final candidates.
+
+| Category | Top Candidates | Input Type | Relative Complexity | Key Advantage for Edge Deployment |
+|-------|---------------|-----------|--------------------|----------------------------------|
+| Efficient 2D-CNNs | ResNet-34, EfficientNet-B0, GhostNet | Spectrogram | Medium | Highly optimizable, mature tools, great accuracy balance. |
+| Efficient 1D-CNNs | x-vector, SincNet | MFCCs / Raw Waveform | Low-to-Medium | Designed for audio, very fast, simpler pipelines. |
+| Hybrids | DeepSpeaker (with a light CNN) | Spectrogram | Medium | Good separation of concerns (feature vs. sequence). |
+| SSL / Foundation | Wav2Vec 2.0 (Feature Extractor) | Raw Waveform | Very High (but separable) | State-of-the-art robustness if latency can be managed. |
+
+Refined Action Plan
