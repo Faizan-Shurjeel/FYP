@@ -1,0 +1,103 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Declaration}{i}{chapter*.1}%
+\contentsline {chapter}{Final Approval}{ii}{chapter*.2}%
+\contentsline {chapter}{Dedication}{iv}{chapter*.3}%
+\contentsline {chapter}{Acknowledgements}{v}{chapter*.4}%
+\contentsline {chapter}{Abstract}{vi}{chapter*.5}%
+\contentsline {chapter}{List of Abbreviations}{viii}{chapter*.6}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Background of the Study}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problem Statement}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Project Objectives}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Scope of the Project}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Significance of the Study}{4}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Broader Impact (UN SDGs)}{4}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Report Organization}{5}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Literature Review}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Theoretical Framework and Taxonomy}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Facial Recognition Pipeline: A Deep Dive}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Stage 1: Face Detection - Finding the Face in the Frame}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Stage 2: Face Recognition - Identifying the Face}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Comprehensive Survey of Speaker Recognition Models}{13}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Category A: State-of-the-Art \& High-Complexity Models}{14}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Category B \& C: Efficient CNN-based Models}{15}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Category D: RNN-based Models (Our Selected Approach)}{16}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Optimization and the Role of ONNX}{17}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Multimodal Biometric Authentication: State of the Art}{19}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Advantages of Multimodal Biometrics}{19}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Fusion Strategies in Multimodal Biometrics}{20}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Recent Advances in Audio-Visual Biometrics}{22}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Multimodal Biometric Databases}{24}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6}Edge Computing and Biometric Systems}{25}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}The Case for Edge-Based Biometric Processing}{26}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Hardware Platforms for Edge Biometrics}{27}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Optimization Techniques for Edge Deployment}{29}{subsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.6.4}Real-Time Constraints and System Design}{31}{subsection.2.6.4}%
+\contentsline {section}{\numberline {2.7}Privacy and Security in Biometric Systems}{32}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Privacy-Preserving Biometric Authentication}{33}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Presentation Attack Detection}{35}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Adversarial Attacks and Defenses}{37}{subsection.2.7.3}%
+\contentsline {section}{\numberline {2.8}Continuous Authentication and Behavioral Biometrics}{38}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Behavioral Biometric Modalities}{38}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Context-Aware Authentication}{39}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Zero-Trust Security Models}{40}{subsection.2.8.3}%
+\contentsline {section}{\numberline {2.9}Domain-Specific Challenges and Solutions}{40}{section.2.9}%
+\contentsline {subsection}{\numberline {2.9.1}Cross-Age Speaker Verification}{40}{subsection.2.9.1}%
+\contentsline {subsection}{\numberline {2.9.2}Low-Resource and Few-Shot Learning}{41}{subsection.2.9.2}%
+\contentsline {subsection}{\numberline {2.9.3}Text-Dependent vs. Text-Independent Verification}{41}{subsection.2.9.3}%
+\contentsline {subsection}{\numberline {2.9.4}Robustness to Environmental Conditions}{42}{subsection.2.9.4}%
+\contentsline {section}{\numberline {2.10}Emerging Trends and Future Directions}{43}{section.2.10}%
+\contentsline {subsection}{\numberline {2.10.1}Foundation Models for Biometrics}{43}{subsection.2.10.1}%
+\contentsline {subsection}{\numberline {2.10.2}Explainable Biometric Systems}{44}{subsection.2.10.2}%
+\contentsline {subsection}{\numberline {2.10.3}Tiny Machine Learning (TinyML)}{44}{subsection.2.10.3}%
+\contentsline {subsection}{\numberline {2.10.4}Synthetic Data and Data Augmentation}{45}{subsection.2.10.4}%
+\contentsline {subsection}{\numberline {2.10.5}Neuromorphic and Alternative Computing Paradigms}{45}{subsection.2.10.5}%
+\contentsline {section}{\numberline {2.11}Comparative Analysis and Lessons Learned}{46}{section.2.11}%
+\contentsline {subsection}{\numberline {2.11.1}Model Selection Criteria}{46}{subsection.2.11.1}%
+\contentsline {subsection}{\numberline {2.11.2}Architecture Trade-offs}{46}{subsection.2.11.2}%
+\contentsline {subsection}{\numberline {2.11.3}Fusion Strategy Selection}{47}{subsection.2.11.3}%
+\contentsline {section}{\numberline {2.12}Research Gaps and Our Contribution}{47}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Chapter Summary}{48}{section.2.13}%
+\contentsline {chapter}{\numberline {3}System Design \& Analysis}{50}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Proposed Methodology: The Hybrid Approach}{50}{section.3.1}%
+\contentsline {section}{\numberline {3.2}System Requirements}{51}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Functional Requirements (FR)}{51}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Non-Functional Requirements (NFR)}{52}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Hardware Platform Selection and Justification}{52}{section.3.3}%
+\contentsline {section}{\numberline {3.4}System Architecture/Design Diagrams}{54}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}High-Level Architecture}{54}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Decision Fusion Logic Flow}{55}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Implementation and Results}{58}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Hardware Implementation and OS Configuration}{58}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Initial Setup and OS Choice}{58}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Overcoming Foundational Setup Challenges}{58}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Software Implementation: Experimental Benchmarking}{59}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Testing Procedures}{59}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Results: Face Detector Comparison}{60}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Results: Face Recognition Model Comparison}{61}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Results: Voice Verification Toolkit Comparison}{61}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Findings and Analysis}{62}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Analysis of Model Selection}{62}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Initial System Performance Estimation}{62}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Key Technical Insights}{63}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{64}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Project Summary}{64}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Problems Faced and Lessons Learned}{64}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Lesson 1: The Importance of Strategic De-scoping}{64}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Lesson 2: Embedded Environments are Not Desktops}{65}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Lesson 3: Empirical Data Trumps Theoretical Performance}{65}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Lesson 4: User Experience vs. Technical Complexity Trade-off}{65}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Future Recommendations (FYP-II Work)}{66}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Phase 1: Modular Development}{66}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Phase 2: Implementation of the Decision Fusion Engine}{66}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Phase 3: Integration and GPIO Control}{66}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Phase 4: Rigorous System-Level Testing}{67}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Phase 5: ONNX Optimization (Stretch Goal)}{67}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}Concluding Remarks}{67}{section.5.4}%
+\contentsline {chapter}{\numberline {A}Installation Guide}{75}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Raspberry Pi OS Setup}{75}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Python Environment Setup}{76}{section.A.2}%
+\contentsline {chapter}{\numberline {B}Code Snippets}{77}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Face Detection with BlazeFace}{77}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Voice Embedding with Resemblyzer}{78}{section.B.2}%
+\contentsline {section}{\numberline {B.3}Decision Fusion Engine (Pseudocode)}{78}{section.B.3}%

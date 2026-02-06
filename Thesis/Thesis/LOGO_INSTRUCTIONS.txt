@@ -1,0 +1,63 @@
+================================================================================
+LOGO FILE INSTRUCTIONS
+================================================================================
+
+The thesis document (main.tex) requires a logo file named "logo.png" to compile
+successfully with the university logo on the title page.
+
+================================================================================
+OPTION 1: ADD YOUR UNIVERSITY LOGO (RECOMMENDED)
+================================================================================
+
+1. Obtain the official COMSATS University Islamabad logo
+2. Save it as "logo.png" in this directory (same folder as main.tex)
+3. Recommended specifications:
+   - Format: PNG with transparent background
+   - Size: 300x300 pixels (or similar square/rectangular ratio)
+   - Resolution: 300 DPI for print quality
+
+================================================================================
+OPTION 2: COMPILE WITHOUT LOGO
+================================================================================
+
+If you don't have the logo file yet, you can still compile the document:
+
+1. Open main.tex in a text editor
+2. Navigate to line ~122 (in the title page section)
+3. Find this line:
+   \includegraphics[width=0.3\textwidth]{logo.png}\\[0.5cm]
+
+4. Comment it out by adding % at the start:
+   % \includegraphics[width=0.3\textwidth]{logo.png}\\[0.5cm]
+
+5. Save and compile the document
+
+================================================================================
+OPTION 3: USE A PLACEHOLDER
+================================================================================
+
+Create a simple placeholder using any image editor:
+- Create a 300x300 pixel white/gray image
+- Add text "COMSATS LOGO" in the center
+- Save as "logo.png" in this directory
+
+================================================================================
+WHERE TO GET THE OFFICIAL LOGO
+================================================================================
+
+Contact:
+- Your department office
+- COMSATS University website (cuiatd.edu.pk or cui.edu.pk)
+- Your supervisor's office
+- University marketing/communications department
+
+================================================================================
+FILE LOCATION
+================================================================================
+
+Place the logo file here:
+G:\My Drive\FYP\Thesis\Thesis\logo.png
+
+(Same directory as main.tex)
+
+================================================================================

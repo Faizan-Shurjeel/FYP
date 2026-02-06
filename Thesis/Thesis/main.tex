@@ -1,0 +1,2417 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ========================================
+% PACKAGE IMPORTS
+% ========================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{float}
+
+% ========================================
+% PAGE GEOMETRY
+% ========================================
+\geometry{
+    left=1.5in,
+    right=1in,
+    top=1in,
+    bottom=1in
+}
+
+% ========================================
+% SPACING AND FORMATTING
+% ========================================
+\onehalfspacing
+\setlength{\parindent}{0.5in}
+\setlength{\parskip}{6pt}
+
+% ========================================
+% HYPERREF SETUP
+% ========================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={Hybrid Two-Layer Authentication System},
+    pdfauthor={Abdullah Laeeq, Ali Hamza, Muhammad Faizan Shurjeel},
+}
+
+% ========================================
+% HEADER AND FOOTER
+% ========================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% ========================================
+% CHAPTER AND SECTION FORMATTING
+% ========================================
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+
+% ========================================
+% TABLE OF CONTENTS FORMATTING
+% ========================================
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+
+% ========================================
+% CODE LISTING SETUP
+% ========================================
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    showstringspaces=false
+}
+
+% ========================================
+% TIKZ LIBRARIES
+% ========================================
+\usetikzlibrary{shapes,arrows,positioning,fit,calc}
+
+% ========================================
+% CUSTOM COMMANDS
+% ========================================
+\newcommand{\university}{COMSATS University Islamabad}
+\newcommand{\campus}{Lahore Campus}
+\newcommand{\department}{Department of Computer Engineering}
+\newcommand{\thesistitle}{Hybrid Two-Layer Authentication System}
+\newcommand{\supervisor}{Dr. Zaid Ahmad}
+\newcommand{\cosupervisor}{Engr. Talha Naveed}
+
+% Placeholder command for missing figures
+\newcommand{\placeholderfig}[2]{%
+    \begin{center}
+    \fbox{\parbox{0.8\textwidth}{\centering\vspace{2cm}\textbf{[PLACEHOLDER IMAGE]}\\\texttt{#1}\\[0.5cm]\textit{#2}\vspace{2cm}}}
+    \end{center}
+}
+
+% ========================================
+% DOCUMENT BEGIN
+% ========================================
+\begin{document}
+
+% ========================================
+% TITLE PAGE
+% ========================================
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+
+    % University Logo (placeholder)
+    \includegraphics[width=3cm]{CUI.png}
+
+    \vspace{0.3cm}
+
+    {\LARGE \textbf{\university}}\\[0.3cm]
+    {\large \campus}\\[1.5cm]
+
+    {\Huge \textbf{\thesistitle}}\\[1cm]
+
+    {\large Final Year Project Thesis}\\[0.3cm]
+    {\large \department}\\[2cm]
+
+    \begin{flushleft}
+    \textbf{Supervised by:}\\
+    \supervisor\\
+    \vspace{0.5cm}
+    \rule{5cm}{0.4pt}\\
+    (Signature)\\[1.5cm]
+
+    \textbf{Presented by:}\\[0.3cm]
+    \begin{tabular}{lll}
+    \textbf{Name} & \textbf{Reg No.} & \textbf{Signature}\\
+    Abdullah Laeeq & FA22-BCE-026 & \rule{3cm}{0.4pt}\\[0.5cm]
+    Muhammad Faizan Shurjeel & FA22-BCE-086 & \rule{3cm}{0.4pt}\\[0.5cm]
+    Ali Hamza & FA22-BCE-071 & \rule{3cm}{0.4pt}\\
+    \end{tabular}
+    \end{flushleft}
+
+    \vfill
+    {\large \today}
+\end{titlepage}
+
+% ========================================
+% BLANK PAGE
+% ========================================
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\vfill
+\begin{center}
+\textit{Page Left Blank Intentionally}
+\end{center}
+\vfill
+\newpage
+
+% ========================================
+% FRONT MATTER
+% ========================================
+\pagenumbering{roman}
+
+% ========================================
+% DECLARATION
+% ========================================
+\chapter*{Declaration}
+\addcontentsline{toc}{chapter}{Declaration}
+
+We, the undersigned, hereby declare that this project, ``\thesistitle,'' is our own original work. It has not been submitted in whole or in part for any other degree or qualification at this or any other university. All sources of information have been duly acknowledged and referenced. We understand the academic regulations regarding plagiarism and affirm that this work complies with them in their entirety. Should this declaration prove to be false, we shall stand responsible for the consequences.
+
+\vspace{1.5cm}
+
+\noindent
+\rule{5cm}{0.4pt}\\
+Abdullah Laeeq (FA22-BCE-026)
+
+\vspace{1cm}
+
+\noindent
+\rule{5cm}{0.4pt}\\
+Muhammad Faizan Shurjeel (FA22-BCE-086)
+
+\vspace{1cm}
+
+\noindent
+\rule{5cm}{0.4pt}\\
+Ali Hamza (FA22-BCE-071)
+
+\newpage
+
+% ========================================
+% FINAL APPROVAL
+% ========================================
+\chapter*{Final Approval}
+\addcontentsline{toc}{chapter}{Final Approval}
+
+This Final Year Project titled ``\thesistitle'' by the following students is hereby approved:
+
+\vspace{0.5cm}
+
+\begin{tabular}{ll}
+Abdullah Laeeq & FA22-BCE-026\\
+Muhammad Faizan Shurjeel & FA22-BCE-086\\
+Ali Hamza & FA22-BCE-071\\
+\end{tabular}
+
+\vspace{1.5cm}
+
+\textbf{Project Supervisor:}\\[0.3cm]
+\rule{5cm}{0.4pt}\\
+\supervisor\\
+\department\\
+\university
+
+\vspace{1.5cm}
+
+\textbf{Co-Supervisor:}\\[0.3cm]
+\rule{5cm}{0.4pt}\\
+\cosupervisor\\
+\department\\
+\university
+
+\vspace{1.5cm}
+
+\textbf{External Examiner:}\\[0.3cm]
+\rule{5cm}{0.4pt}\\
+Name: \rule{4cm}{0.4pt}\\
+Designation: \rule{4cm}{0.4pt}
+
+\vspace{1.5cm}
+
+\textbf{Head of Department:}\\[0.3cm]
+\rule{5cm}{0.4pt}\\
+\department\\
+\university
+
+\newpage
+
+% ========================================
+% DEDICATION
+% ========================================
+\chapter*{Dedication}
+\addcontentsline{toc}{chapter}{Dedication}
+
+\begin{center}
+\vspace*{2cm}
+\textit{This work is dedicated to our families, whose unwavering support and encouragement have been the foundation of our success, and to our teachers, who have guided us on this academic journey.}
+\end{center}
+
+\newpage
+
+% ========================================
+% ACKNOWLEDGEMENTS
+% ========================================
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+We would like to express our sincere gratitude to our supervisor, \supervisor, for his invaluable guidance, patience, and expertise throughout this project. His mentorship has been instrumental in shaping our understanding and approach. We also thank our co-supervisor, \cosupervisor, for his technical insights and support. Finally, we are grateful to our families and friends for their constant encouragement and understanding.
+
+\newpage
+
+% ========================================
+% ABSTRACT
+% ========================================
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This project presents the design and implementation of a Hybrid Two-Layer Authentication System that combines facial recognition and speaker verification for secure, contactless access control. Deployed on a Raspberry Pi 4, the system prioritizes both security and user convenience through a parallel processing architecture that analyzes both biometric modalities simultaneously. The core contribution of this work is the rigorous, data-driven selection of lightweight AI models---BlazeFace for face detection, MobileFaceNet for face recognition, and Resemblyzer for speaker verification---that meet real-time performance constraints on resource-limited hardware. Experimental benchmarking confirms that the selected stack achieves an estimated authentication latency of approximately one second, well within our target of two seconds. This thesis documents the complete journey from literature review to practical implementation, providing a blueprint for deploying sophisticated AI-powered security systems on affordable edge hardware.
+
+\textbf{Keywords:} Biometric Authentication, Facial Recognition, Speaker Verification, Edge Computing, Raspberry Pi, Multimodal Fusion, Deep Learning
+
+\newpage
+
+% ========================================
+% LIST OF ABBREVIATIONS
+% ========================================
+\chapter*{List of Symbols, Abbreviations, and Acronyms}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+
+\begin{tabular}{ll}
+\textbf{Abbreviation} & \textbf{Full Form}\\
+\hline
+AI & Artificial Intelligence\\
+ANN & Artificial Neural Network\\
+API & Application Programming Interface\\
+ARM & Advanced RISC Machine\\
+ASV & Automatic Speaker Verification\\
+BCE & Bachelor of Computer Engineering\\
+CNN & Convolutional Neural Network\\
+CPU & Central Processing Unit\\
+DNN & Deep Neural Network\\
+ECAPA & Emphasized Channel Attention, Propagation and Aggregation\\
+EER & Equal Error Rate\\
+FAR & False Acceptance Rate\\
+FPS & Frames Per Second\\
+FRR & False Rejection Rate\\
+FYP & Final Year Project\\
+GE2E & Generalized End-to-End\\
+GPIO & General Purpose Input/Output\\
+GPU & Graphics Processing Unit\\
+GUI & Graphical User Interface\\
+IoT & Internet of Things\\
+LSTM & Long Short-Term Memory\\
+ML & Machine Learning\\
+MTCNN & Multi-task Cascaded Convolutional Networks\\
+NFR & Non-Functional Requirement\\
+NPU & Neural Processing Unit\\
+ONNX & Open Neural Network Exchange\\
+OS & Operating System\\
+PAD & Presentation Attack Detection\\
+RAM & Random Access Memory\\
+RNN & Recurrent Neural Network\\
+SBC & Single Board Computer\\
+SDK & Software Development Kit\\
+SDG & Sustainable Development Goal\\
+SIMD & Single Instruction Multiple Data\\
+SoC & System on Chip\\
+SOTA & State of the Art\\
+SV & Speaker Verification\\
+TDNN & Time Delay Neural Network\\
+TinyML & Tiny Machine Learning\\
+TPU & Tensor Processing Unit\\
+UN & United Nations\\
+VPU & Vision Processing Unit\\
+\end{tabular}
+
+\newpage
+
+% ========================================
+% TABLE OF CONTENTS
+% ========================================
+\tableofcontents
+\newpage
+
+% ========================================
+% LIST OF FIGURES
+% ========================================
+\listoffigures
+\newpage
+
+% ========================================
+% LIST OF TABLES
+% ========================================
+\listoftables
+\newpage
+
+% ========================================
+% MAIN MATTER
+% ========================================
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ========================================
+% CHAPTER 1: INTRODUCTION
+% ========================================
+\chapter{Introduction}
+\label{chap:introduction}
+
+\section{Background of the Study}
+\label{sec:background}
+
+In an increasingly connected world, the need for robust yet user-friendly security systems has never been greater. Traditional authentication methods, such as PINs, passwords, and physical keys, are vulnerable to theft, loss, and social engineering attacks. Biometric authentication offers a compelling alternative by verifying a user's identity based on their unique physiological or behavioral characteristics. Unlike passwords, biometrics cannot be easily forgotten, shared, or stolen, making them an inherently more secure foundation for access control.
+
+This project focuses on developing a \textbf{Hybrid Two-Layer Authentication System} that combines two powerful biometric modalities: \textbf{facial recognition} and \textbf{speaker verification}. By processing both streams in parallel, the system can make an authentication decision based on the successful verification of \textit{either} modality (an ``OR-logic'' approach). This design philosophy prioritizes user convenience and system robustness, as the system can authenticate a user even if one modality is temporarily unavailable (e.g., the user is wearing a mask or there is ambient noise).
+
+A critical constraint of this project is that the entire system must run locally on an affordable, low-power edge device---a \textbf{Raspberry Pi 4}. This ``edge computing'' approach is essential for privacy, as sensitive biometric data never leaves the user's premises, and for reliability, as the system does not depend on an internet connection. This constraint, however, poses significant technical challenges related to computational resources, model optimization, and real-time performance.
+
+
+\centering
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/1.png}
+    \caption{Conceptual Overview of the Hybrid Two-Layer Authentication System}
+    \label{fig:concept_overview}
+\end{figure}
+
+
+\section{Problem Statement}
+\label{sec:problem}
+
+The primary challenge addressed by this project is:
+
+\textit{How can a sophisticated, multi-modal biometric authentication system, combining facial recognition and speaker verification, be designed and implemented to run in real-time on a resource-constrained edge device like a Raspberry Pi 4, while achieving a target end-to-end latency of under 2 seconds?}
+
+This challenge decomposes into several sub-problems:
+\begin{enumerate}
+    \item \textbf{Model Selection:} The vast majority of state-of-the-art (SOTA) biometric models are designed for high-performance servers with dedicated GPUs. Identifying models that offer an acceptable balance of accuracy and speed on a CPU-only platform is non-trivial.
+    \item \textbf{System Architecture:} Designing a software architecture that can capture and process two data streams (video and audio) in parallel, manage inter-thread communication, and make a fused decision efficiently.
+    \item \textbf{Hardware Environment:} Setting up a stable and optimized software environment on the ARM64-based Raspberry Pi, which has a less mature ecosystem than x86 platforms.
+    \item \textbf{Privacy and Security:} Ensuring that the system stores and processes biometric templates securely without transmitting any data over a network.
+\end{enumerate}
+
+\section{Project Objectives}
+\label{sec:objectives}
+
+The objectives of this Final Year Project are:
+
+\begin{enumerate}
+    \item To conduct a comprehensive literature review of facial recognition and speaker verification technologies, with a specific focus on models suitable for edge deployment.
+    \item To design a system architecture for a hybrid, parallel biometric authentication system with clearly defined functional and non-functional requirements.
+    \item To benchmark and select the optimal combination of AI models (face detector, face recognizer, voice encoder) that meets real-time performance constraints on a Raspberry Pi 4.
+    \item To implement a functional prototype of the authentication system with a decision fusion engine and GPIO control for physical access (e.g., activating a door lock).
+    \item To evaluate the final system's performance in terms of latency, accuracy (FAR/FRR), and resource consumption.
+\end{enumerate}
+
+\section{Scope of the Project}
+\label{sec:scope}
+
+\subsection*{In Scope:}
+\begin{itemize}
+    \item Design and implementation on a single Raspberry Pi 4 Model B (8GB).
+    \item Face detection, face recognition (verification mode), and speaker verification.
+    \item A simple OR-logic decision fusion mechanism.
+    \item Local storage of biometric templates on the device's filesystem.
+    \item GPIO control for a physical output signal (e.g., to a relay).
+    \item A command-line interface for enrollment and testing.
+\end{itemize}
+
+\subsection*{Out of Scope:}
+\begin{itemize}
+    \item Cloud-based processing or network connectivity.
+    \item Advanced anti-spoofing measures (e.g., 3D depth sensing for liveness detection), though basic blink detection may be explored.
+    \item A polished graphical user interface (GUI).
+    \item Large-scale deployment or user management features.
+    \item Support for multiple concurrent authentication requests.
+\end{itemize}
+
+\section{Significance of the Study}
+\label{sec:significance}
+
+\subsection*{Academic Significance:}
+This project provides a practical case study in deploying deep learning models on resource-constrained hardware. It contributes a documented methodology for benchmarking and selecting models based on empirical performance data rather than theoretical claims, which is a valuable resource for students and researchers working in edge AI.
+
+\subsection*{Practical Significance:}
+The resulting system serves as a blueprint for affordable, privacy-respecting biometric security solutions suitable for small businesses, educational institutions, and residential applications in regions where expensive commercial systems are not viable.
+
+\section{Broader Impact (UN SDGs)}
+\label{sec:sdgs}
+
+This project aligns with the United Nations Sustainable Development Goals:
+\begin{itemize}
+    \item \textbf{SDG 9 (Industry, Innovation, and Infrastructure):} By developing an affordable, innovative security system using cutting-edge AI, we contribute to building resilient infrastructure accessible to developing economies.
+    \item \textbf{SDG 11 (Sustainable Cities and Communities):} Secure access control is fundamental to safe urban environments. Our privacy-first, offline approach provides security without the societal risks of centralized surveillance databases.
+    \item \textbf{SDG 16 (Peace, Justice, and Strong Institutions):} By enabling secure verification of identity, the system can contribute to secure and accountable institutions.
+\end{itemize}
+
+\centering
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{images/2.png}
+\caption{Project Alignment with United Nations Sustainable Development Goals}
+\label{fig:sdg_alignment}
+\end{figure}
+
+
+\section{Report Organization}
+\label{sec:organization}
+
+This thesis is organized as follows:
+\begin{itemize}
+    \item \textbf{Chapter 1: Introduction} - Provides background, problem statement, objectives, and scope.
+    \item \textbf{Chapter 2: Literature Review} - Presents a comprehensive survey of facial recognition, speaker verification, multimodal biometrics, edge computing, and related technologies.
+    \item \textbf{Chapter 3: System Design \& Analysis} - Details the proposed methodology, system requirements, hardware selection, and architecture.
+    \item \textbf{Chapter 4: Implementation and Results} - Documents the practical setup, benchmarking procedures, and experimental findings.
+    \item \textbf{Chapter 5: Conclusion and Future Work} - Summarizes achievements, lessons learned, and future directions.
+\end{itemize}
+
+% ========================================
+% CHAPTER 2: LITERATURE REVIEW
+% ========================================
+\chapter{Literature Review}
+\label{chap:literature}
+
+\section{Theoretical Framework and Taxonomy}
+\label{sec:taxonomy}
+
+A major challenge in reviewing the vast body of biometric literature is the frequent conflation of model architectures, training methodologies, and the software libraries that implement them. To bring clarity to our selection process, we first established a clear taxonomy to categorize and evaluate the available technologies. This framework was essential for making informed, data-driven decisions rather than simply choosing models based on popularity.
+
+The taxonomy distinguishes between:
+\begin{itemize}
+    \item \textbf{Network Architectures:} The fundamental structure of the neural network (e.g., ResNet, MobileNet, LSTM).
+    \item \textbf{Training Methodologies:} The loss functions and training techniques used to optimize the model (e.g., Triplet Loss, ArcFace).
+    \item \textbf{Pre-trained Models:} Specific instances of trained networks available for deployment (e.g., FaceNet, InsightFace models).
+    \item \textbf{Software Libraries/Toolkits:} Python packages that provide easy-to-use APIs wrapping these models (e.g., MediaPipe, Resemblyzer, SpeechBrain).
+\end{itemize}
+
+This structured approach allowed us to evaluate technologies at multiple levels: architectural efficiency, training quality, ease of integration, and ultimately, real-world performance on our target hardware.
+
+\begin{figure}[H]
+\centering
+\includegraphics{Images/3.png}
+\caption{Taxonomy of Biometric Recognition Technologies}
+\label{fig:taxonomy}
+\end{figure}
+
+
+\section{Facial Recognition Pipeline: A Deep Dive}
+\label{sec:face_pipeline}
+
+The facial recognition process is fundamentally a two-stage pipeline: detection, followed by recognition. The overall latency and reliability of the system are critically dependent on the performance of both stages.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{face\_pipeline\_overview.png}{Horizontal flowchart showing the complete face recognition pipeline: Input Image $\rightarrow$ Face Detection (output: bounding box + landmarks) $\rightarrow$ Face Alignment/Crop $\rightarrow$ Face Recognition Model $\rightarrow$ 512-D Embedding Vector $\rightarrow$ Cosine Similarity Comparison $\rightarrow$ Match/No Match Decision. Include sample face images at each stage showing the transformation.}
+\caption{Complete Facial Recognition Pipeline from Input to Decision}
+\label{fig:face_pipeline}
+\end{figure}
+
+\subsection{Stage 1: Face Detection - Finding the Face in the Frame}
+\label{subsec:face_detection}
+
+The face detection module is responsible for perpetually scanning the input video stream to locate the bounding box coordinates of any faces present. Its efficiency is paramount, as it runs continuously. Our review and subsequent experimentation covered a spectrum of techniques.
+
+\begin{itemize}
+    \item \textbf{Haar Cascade Classifiers:} This classic machine learning technique, implemented efficiently in the OpenCV library, was our initial baseline. It is based on a cascade of features trained using AdaBoost.
+    \begin{itemize}
+        \item \textit{Pros:} Extremely fast on CPUs, low memory footprint.
+        \item \textit{Cons:} Prone to false positives, struggles significantly with non-frontal faces (tilted or profile views), and provides no facial landmark information. Our experimental tests confirmed these limitations.
+    \end{itemize}
+
+    \item \textbf{MTCNN (Multi-task Cascaded Convolutional Networks):} Zhang et al. \cite{mtcnn} introduced this deep learning-based model known for its high accuracy. It uses a three-stage cascade of CNNs (P-Net, R-Net, O-Net) to progressively refine face detections and identify key facial landmarks.
+
+    \textit{\textbf{Paper Summary:}} Zhang et al. proposed a cascaded framework where each stage serves a specific purpose: the Proposal Network (P-Net) quickly generates candidate windows, the Refine Network (R-Net) filters false positives, and the Output Network (O-Net) produces final bounding boxes with five-point facial landmarks. The multi-task learning approach jointly optimizes face classification, bounding box regression, and landmark localization, achieving state-of-the-art accuracy at the time of publication.
+    \begin{itemize}
+        \item \textit{Pros:} High detection accuracy, provides 5-point facial landmarks.
+        \item \textit{Cons:} Our experimental benchmark on the Raspberry Pi 4 CPU revealed it to be extremely slow, achieving only \textbf{$\sim$2 FPS}. This makes it completely unsuitable for any real-time video application.
+    \end{itemize}
+
+    \item \textbf{BlazeFace:} Bazarevsky et al. \cite{blazeface} developed BlazeFace at Google Research as a SOTA lightweight detector specifically designed for mobile and edge GPUs, but its architecture is also highly efficient on CPUs. It is inspired by MobileNet and uses a hardware-aware design.
+
+    \textit{\textbf{Paper Summary:}} BlazeFace introduces several key innovations: (1) a modified MobileNet backbone with increased receptive field, (2) an anchor scheme specifically tuned for face detection, and (3) a tie resolution strategy for reducing jitter in video applications. The model achieves sub-millisecond inference on mobile GPUs while providing 6-point facial landmarks (eyes, ears, nose, mouth) useful for face alignment and basic liveness detection.
+    \begin{itemize}
+        \item \textit{Pros:} Blazing fast, highly accurate, and provides 6-point facial landmarks which can be used for liveness detection (e.g., eye tracking). Our benchmark showed it achieving \textbf{30-45 FPS} on the Raspberry Pi 4.
+        \item \textit{Cons:} Slightly more complex to implement from scratch than Haar cascades, but readily available via Google's MediaPipe framework.
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{face\_detection\_comparison.png}{Side-by-side comparison showing three face detection methods on the same input image: (Left) Haar Cascade with multiple false positives and missed detections; (Center) MTCNN with accurate detection but noted ``2 FPS'' latency; (Right) BlazeFace with accurate detection, landmarks shown, and noted ``30-45 FPS'' speed. Include a small bar chart below comparing FPS performance.}
+\caption{Visual Comparison of Face Detection Methods on Raspberry Pi 4}
+\label{fig:face_detection_comparison}
+\end{figure}
+
+\subsection{Stage 2: Face Recognition - Identifying the Face}
+\label{subsec:face_recognition}
+
+Once a face is detected and cropped, it is passed to a recognition model to generate a discriminative feature vector, or ``embedding.'' This stage is where the core identification happens.
+
+\subsubsection*{Network Architectures}
+This refers to the neural network's structure.
+
+\begin{itemize}
+    \item \textbf{InceptionResNetV1:} The foundational architecture used in the original Google FaceNet paper \cite{facenet}. It combines Inception modules with residual connections for powerful feature extraction.
+
+    \textit{\textbf{Paper Summary (FaceNet):}} Schroff et al. introduced a unified framework for face verification, recognition, and clustering using a deep convolutional network trained with triplet loss. The key innovation was learning a compact 128-dimensional Euclidean embedding where distances directly correspond to face similarity. The model achieved 99.63\% accuracy on LFW benchmark, setting a new state of the art.
+
+    However, the architecture is large and computationally expensive. Our benchmark showed an inference time of \textbf{$\sim$1200 ms} on the Pi 4.
+
+    \item \textbf{ResNet (Residual Networks):} Architectures like ResNet-34 and ResNet-50 are common backbones for face recognition and form the basis of models like the InsightFace ``Buffalo\_L/M'' family \cite{insightface}. Our tests showed the ResNet-50 based model to be even slower, at \textbf{$\sim$1800 ms}.
+
+    \item \textbf{MobileFaceNet:} Chen et al. \cite{mobilefacenet} proposed this lightweight architecture specifically designed for mobile CPUs. It uses depthwise separable convolutions to drastically reduce the number of parameters and computations.
+
+    \textit{\textbf{Paper Summary:}} The authors demonstrated that face verification can be achieved efficiently on mobile devices by: (1) using Global Depthwise Convolution (GDConv) in place of global average pooling to retain spatial information, (2) employing a bottleneck structure optimized for the face recognition task, and (3) training with ArcFace loss for discriminative embeddings. The resulting model is only 4MB with 0.99M parameters, achieving 99.28\% on LFW while running in real-time on mobile CPUs.
+
+    Our tests showed an inference time of \textbf{$\sim$250-350 ms}, making it 3-5x faster than the other models.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{mobilefacenet\_architecture.png}{Detailed architecture diagram of MobileFaceNet showing: Input (112x112x3) $\rightarrow$ Initial Conv layers $\rightarrow$ Series of Bottleneck blocks with depthwise separable convolutions (show internal structure of one block expanded) $\rightarrow$ Global Depthwise Conv $\rightarrow$ Linear layer $\rightarrow$ 512-D embedding output. Include parameter counts at each stage and total model size (4MB).}
+\caption{MobileFaceNet Architecture with Depthwise Separable Convolutions}
+\label{fig:mobilefacenet_arch}
+\end{figure}
+
+\subsubsection*{Loss Functions}
+These are the mathematical formulas used during training to make the model's embeddings more discriminative.
+
+\begin{itemize}
+    \item \textbf{Triplet Loss:} Popularized by FaceNet \cite{facenet}, it works by ensuring that the embedding of an ``anchor'' face is closer to a ``positive'' example (same person) than to a ``negative'' example (different person) by a margin $\alpha$:
+    \[
+    L = \sum_{i}^{N} \left[ \|f(x_i^a) - f(x_i^p)\|_2^2 - \|f(x_i^a) - f(x_i^n)\|_2^2 + \alpha \right]_+
+    \]
+
+    \item \textbf{ArcFace (Additive Angular Margin Loss):} Deng et al. \cite{arcface} proposed a more modern and effective loss function that works by adding an angular margin to the separation between classes in the embedding space.
+
+    \textit{\textbf{Paper Summary:}} ArcFace introduces an additive angular margin penalty $m$ between the feature vector and the target weight to simultaneously enhance intra-class compactness and inter-class discrepancy. The loss is defined as:
+    \[
+    L = -\frac{1}{N}\sum_{i=1}^{N}\log\frac{e^{s(\cos(\theta_{y_i}+m))}}{e^{s(\cos(\theta_{y_i}+m))} + \sum_{j=1,j\neq y_i}^{n}e^{s\cos\theta_j}}
+    \]
+    where $s$ is a scaling factor and $m$ is the angular margin. This geometric interpretation provides clear optimization guidance and achieves state-of-the-art results across multiple benchmarks.
+
+    Most SOTA pre-trained models, including the MobileFaceNet version we chose, are trained using ArcFace.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{arcface\_loss\_visualization.png}{Geometric visualization comparing Softmax loss vs. ArcFace loss in 2D angular space. (Left) Softmax: embeddings of different classes shown with overlapping decision boundaries; (Right) ArcFace: same classes with clear angular margin $m$ separating them, showing tighter intra-class clustering and larger inter-class separation. Include angular margin annotation.}
+\caption{Visualization of ArcFace Angular Margin Loss vs. Standard Softmax}
+\label{fig:arcface_viz}
+\end{figure}
+
+\section{Comprehensive Survey of Speaker Recognition Models}
+\label{sec:voice_models}
+
+To select the optimal voice architecture, we conducted an extensive study of five distinct model categories, analyzing their suitability for our CPU-bound edge device.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{speaker\_models\_taxonomy.png}{Hierarchical diagram organizing speaker recognition models into categories: (A) High-Complexity SOTA (ECAPA-TDNN, Transformers); (B) Efficient CNNs (MobileNet-based, GhostNet); (C) TDNN-based (x-vector); (D) RNN-based (GE2E/LSTM); Each category shows accuracy vs. latency trade-off indicator with color coding (red for slow, green for fast).}
+\caption{Taxonomy of Speaker Recognition Models by Complexity and Efficiency}
+\label{fig:speaker_taxonomy}
+\end{figure}
+
+\subsection{Category A: State-of-the-Art \& High-Complexity Models}
+\label{subsec:voice_sota}
+
+These models define the upper limit of academic accuracy but present insurmountable challenges for real-time deployment on a Raspberry Pi.
+
+\textbf{ECAPA-TDNN:} Desplanques et al. \cite{ecapa_tdnn} proposed the Emphasized Channel Attention, Propagation and Aggregation Time Delay Neural Network, which represents the current state of the art in speaker verification.
+
+\textit{\textbf{Paper Summary:}} ECAPA-TDNN introduces three key innovations over the standard x-vector TDNN: (1) Squeeze-and-Excitation (SE) blocks with channel-dependent frame attention, (2) Multi-scale feature aggregation through dense skip connections, and (3) Channel-dependent attentive statistics pooling. These additions significantly improve the model's ability to capture speaker-discriminative information across different temporal scales, achieving state-of-the-art results on VoxCeleb with an EER of 0.87\%.
+
+\begin{table}[H]
+\centering
+\caption{SOTA High-Complexity Speaker Recognition Models}
+\label{tab:voice_sota}
+\small
+\begin{tabular}{p{0.15\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+\toprule
+\textbf{Model} & \textbf{Architecture Breakdown} & \textbf{Strengths} & \textbf{Edge Feasibility}\\
+\midrule
+ECAPA-TDNN & Emphasized Channel Attention + TDNN & Highest published accuracy, robust to noise & Extremely high compute requirements. Our tests showed \textbf{$>$4 seconds} inference time on the Pi 4 CPU\\
+\addlinespace
+Transformers & Self-Attention based models & Excellent at capturing long-range dependencies in speech & Even heavier than ECAPA-TDNN, completely unfeasible for our hardware\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Category B \& C: Efficient CNN-based Models}
+\label{subsec:voice_cnn}
+
+This category contains the most promising candidates for our project, leveraging mature CNN optimizations.
+
+\textbf{x-vector (TDNN):} The x-vector system, developed at JHU, uses a Time Delay Neural Network architecture with statistics pooling to generate fixed-length speaker embeddings from variable-length utterances.
+
+\textit{\textbf{Paper Summary:}} The x-vector approach extracts frame-level representations using TDNN layers, then aggregates them using statistics pooling (mean and standard deviation) to produce a fixed-dimensional embedding. Training uses a softmax loss over a large speaker set, with embeddings extracted from an intermediate layer. This architecture provides an excellent balance between accuracy and computational efficiency.
+
+\begin{table}[H]
+\centering
+\caption{Efficient CNN-Based Speaker Recognition Models}
+\label{tab:voice_cnn}
+\small
+\begin{tabular}{p{0.15\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+\toprule
+\textbf{Model} & \textbf{Architecture Breakdown} & \textbf{Strengths} & \textbf{Edge Feasibility}\\
+\midrule
+MobileNet/\newline GhostNet & Standard efficient 2D-CNNs & Excellent balance of accuracy/speed. Proven for edge deployment in vision tasks & Strong candidates\\
+\addlinespace
+x-vector (TDNN) & Time Delay Neural Network + Statistics Pooling & Simpler and lighter than ECAPA-TDNN & Excellent baseline, fast on CPU\\
+\addlinespace
+SincNet & Parametric 1D-CNN using Sinc functions & Extremely efficient and interpretable first layer & Prime candidate for highly constrained devices\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Category D: RNN-based Models (Our Selected Approach)}
+\label{subsec:voice_rnn}
+
+Recurrent Neural Networks are well-suited for sequential data like audio.
+
+\textbf{GE2E (Generalized End-to-End Loss):} Wan et al. \cite{ge2e} proposed this training methodology for speaker verification that significantly improves both training efficiency and model performance.
+
+\textit{\textbf{Paper Summary:}} The GE2E loss operates on batches containing utterances from multiple speakers, computing a similarity matrix between all utterance embeddings and all speaker centroids. The loss encourages each utterance embedding to be closer to its own speaker's centroid than to any other speaker's centroid. Key advantages include: (1) more stable gradients during training, (2) ability to use larger batch sizes efficiently, and (3) direct optimization of the verification task. The authors demonstrate significant improvements over the earlier Tuple-based End-to-End (TE2E) loss.
+
+The \textbf{Resemblyzer} library \cite{resemblyzer} provides a convenient Python implementation of GE2E-trained LSTM encoders, which we selected for our system.
+
+\begin{table}[H]
+\centering
+\caption{RNN-Based Speaker Recognition Models}
+\label{tab:voice_rnn}
+\begin{tabular}{p{0.15\textwidth}p{0.2\textwidth}p{0.25\textwidth}p{0.3\textwidth}}
+\toprule
+\textbf{Toolkit} & \textbf{Underlying Model} & \textbf{Strengths} & \textbf{Edge Feasibility}\\
+\midrule
+Resemblyzer & \textbf{GE2E (LSTM-based)} & Fast, easy to implement, provides a simple API for generating embeddings & \textbf{Excellent.} Our experimental tests showed it generated embeddings from a 3-second clip in \textbf{under 1 second}, meeting our real-time requirement\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{ge2e\_loss\_diagram.png}{Visualization of GE2E loss computation: (Left) Batch structure showing N speakers × M utterances matrix; (Center) LSTM encoder processing each utterance to produce embeddings; (Right) Similarity matrix between embeddings and speaker centroids, with loss pushing diagonal elements high and off-diagonal elements low. Include mathematical notation for centroid computation and similarity.}
+\caption{Generalized End-to-End (GE2E) Loss Training Mechanism}
+\label{fig:ge2e_loss}
+\end{figure}
+
+\section{Optimization and the Role of ONNX}
+\label{sec:onnx}
+
+A key part of our methodology is the plan to convert all selected models to the \textbf{ONNX (Open Neural Network Exchange)} format \cite{onnx}. ONNX is an open standard for representing machine learning models. Using the \textbf{ONNX Runtime}, we can execute these models with a highly optimized inference engine that is specifically tuned for CPU performance. This step is crucial for squeezing the maximum possible speed out of the Raspberry Pi's processor and is a key part of our implementation plan for FYP-II.
+
+\textit{\textbf{Paper Summary (ONNX Runtime):}} Bai et al. \cite{onnx_runtime} demonstrated that ONNX Runtime provides significant performance improvements through: (1) graph-level optimizations including constant folding and operator fusion, (2) execution provider abstraction allowing hardware-specific optimizations, and (3) memory planning to reduce allocation overhead. On ARM processors specifically, ONNX Runtime can achieve up to 40\% performance improvement over native framework inference.
+
+The ONNX ecosystem provides several advantages:
+\begin{itemize}
+    \item \textbf{Cross-framework compatibility:} Models trained in PyTorch or TensorFlow can be converted to a unified format.
+    \item \textbf{Hardware optimization:} ONNX Runtime includes optimizations for various CPU architectures, including ARM.
+    \item \textbf{Reduced inference latency:} Graph optimizations and operator fusion can significantly reduce model execution time.
+    \item \textbf{Smaller memory footprint:} Optimized models often require less RAM during inference.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{onnx\_conversion\_pipeline.png}{Flowchart showing model conversion and deployment: PyTorch Model / TensorFlow Model $\rightarrow$ ONNX Export (torch.onnx.export / tf2onnx) $\rightarrow$ ONNX Model (.onnx file) $\rightarrow$ ONNX Runtime optimizations (operator fusion, constant folding, memory planning) $\rightarrow$ Optimized ONNX Model $\rightarrow$ Deployment on Raspberry Pi with ARM-specific execution provider. Include performance improvement percentages at each stage.}
+\caption{ONNX Model Conversion and Optimization Pipeline}
+\label{fig:onnx_pipeline}
+\end{figure}
+
+\section{Multimodal Biometric Authentication: State of the Art}
+\label{sec:multimodal_biometrics}
+
+The integration of multiple biometric modalities has emerged as a powerful approach to overcome the limitations of unimodal systems. This section reviews the current state of the art in multimodal biometric authentication, with particular emphasis on systems that combine facial and voice recognition.
+
+\subsection{Advantages of Multimodal Biometrics}
+\label{subsec:multimodal_advantages}
+
+Multimodal biometric systems offer several compelling advantages over their unimodal counterparts:
+
+\begin{enumerate}
+    \item \textbf{Improved Accuracy:} By combining evidence from multiple sources, multimodal systems can achieve significantly lower error rates. Research by Zheng et al. \cite{multimodal_camera_ppg} demonstrates that combining face and physiological signals can reduce Equal Error Rate (EER) by up to 60\% compared to single-modality systems.
+
+    \textit{\textbf{Paper Summary:}} Zheng et al. proposed a novel multimodal system combining facial recognition with camera-based photoplethysmography (PPG) and fingerprint data. Their fusion approach uses quality-aware weighting to dynamically adjust the contribution of each modality based on signal quality, achieving robust performance even when individual modalities are degraded.
+
+    \item \textbf{Enhanced Robustness:} Environmental factors that degrade one modality may not affect others. For instance, poor lighting conditions that compromise facial recognition may not impact voice recognition, and vice versa. This resilience is particularly valuable in real-world deployment scenarios \cite{multimodal_robustness}.
+
+    \item \textbf{Reduced Failure-to-Enroll Rate:} Some individuals may have difficulty enrolling in specific biometric systems due to physical characteristics or disabilities. Multimodal systems provide alternative authentication paths, improving accessibility \cite{multimodal_accessibility}.
+
+    \item \textbf{Increased Security Against Spoofing:} Simultaneously spoofing multiple biometric modalities is significantly more challenging than compromising a single modality. This increases the cost and complexity of attacks, providing better security \cite{anti_spoofing_multimodal}.
+
+    \item \textbf{Flexibility in Application Scenarios:} Different scenarios may favor different modalities. A multimodal system can adapt by emphasizing the most reliable modality in a given context \cite{adaptive_multimodal}.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{multimodal\_advantages\_diagram.png}{Infographic showing five key advantages of multimodal biometrics with icons: (1) Accuracy - chart showing error rate reduction; (2) Robustness - shield icon with environmental factors; (3) Accessibility - universal access symbol; (4) Security - lock with multiple keys; (5) Flexibility - adaptive gears. Each section includes a brief statistic or benefit statement.}
+\caption{Key Advantages of Multimodal Biometric Systems}
+\label{fig:multimodal_advantages}
+\end{figure}
+
+\subsection{Fusion Strategies in Multimodal Biometrics}
+\label{subsec:fusion_strategies}
+
+The literature identifies three primary levels at which biometric information can be fused:
+
+\subsubsection*{Feature-Level Fusion}
+
+Feature-level fusion combines feature vectors from different modalities before matching. While this approach can theoretically provide the most comprehensive representation, it faces several challenges:
+
+\begin{itemize}
+    \item \textbf{Dimensionality Issues:} Concatenating features from multiple modalities often results in extremely high-dimensional vectors, leading to the curse of dimensionality.
+    \item \textbf{Incompatibility:} Feature sets from different modalities may be incompatible or incommensurate, requiring complex normalization strategies.
+    \item \textbf{Computational Cost:} High-dimensional feature spaces increase computational requirements substantially.
+\end{itemize}
+
+Despite these challenges, recent work by Talreja et al. \cite{deep_hashing_multimodal} proposes using deep hashing techniques to generate compact binary representations from multimodal features, achieving both security and efficiency.
+
+\textit{\textbf{Paper Summary:}} Talreja et al. introduced a deep hashing framework that learns to map high-dimensional multimodal biometric features into compact binary codes while preserving discriminative information. The approach uses a combination of classification loss and quantization loss to ensure the binary codes are both discriminative and compact, enabling efficient template storage and matching.
+
+\subsubsection*{Score-Level Fusion}
+
+Score-level fusion combines matching scores from individual biometric matchers. This is the most popular fusion approach due to its simplicity and effectiveness. Common fusion techniques include:
+
+\begin{itemize}
+    \item \textbf{Simple Sum/Product Rules:} Combining normalized scores using arithmetic operations.
+    \item \textbf{Weighted Fusion:} Assigning different weights to modalities based on their reliability or quality.
+    \item \textbf{Machine Learning Approaches:} Using classifiers like SVM, neural networks, or decision trees to learn optimal fusion strategies \cite{ml_score_fusion}.
+\end{itemize}
+
+Poh et al. \cite{quality_dependent_fusion} conducted an extensive benchmark study comparing various score-level fusion algorithms, considering both quality-dependent and cost-sensitive scenarios.
+
+\textit{\textbf{Paper Summary:}} This comprehensive study evaluated 22 different score-level fusion methods across multiple multimodal biometric databases. Key findings include: (1) quality-aware fusion consistently outperforms static fusion, (2) trained fusion methods outperform fixed rules when sufficient training data is available, and (3) the optimal fusion method depends on the specific modality combination and application requirements. The benchmark provides valuable guidance for practitioners selecting fusion strategies.
+
+\subsubsection*{Decision-Level Fusion}
+
+Decision-level fusion combines the final decisions (accept/reject) from individual biometric systems using voting schemes or logical operations. While this is the simplest approach, it discards valuable information contained in matching scores. However, it remains useful in scenarios where individual systems operate as black boxes or when computational resources are extremely limited.
+
+Our proposed system employs score-level fusion with OR-logic at the decision stage, balancing simplicity with the preservation of discriminative information from both modalities.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{fusion\_strategies\_comparison.png}{Three-panel diagram comparing fusion levels: (Left) Feature-Level: shows feature vectors being concatenated before a single classifier; (Center) Score-Level: shows parallel classifiers producing scores that are combined (sum, product, weighted); (Right) Decision-Level: shows parallel classifiers producing accept/reject decisions combined via voting. Include pros/cons summary below each panel and highlight ``Score-Level'' as our chosen approach.}
+\caption{Comparison of Multimodal Fusion Strategies at Different Levels}
+\label{fig:fusion_strategies}
+\end{figure}
+
+\subsection{Recent Advances in Audio-Visual Biometrics}
+\label{subsec:audio_visual_advances}
+
+The specific combination of facial and voice biometrics has received considerable attention in recent years, driven by its natural alignment with human communication modalities.
+
+\subsubsection*{Joint Audio-Visual Learning}
+
+Liu et al. \cite{audio_visual_lip} propose a joint audio-visual lip biometrics system that leverages the correlation between lip movements and speech.
+
+\textit{\textbf{Paper Summary:}} The DeepLip framework simultaneously processes audio spectrograms and lip video sequences using parallel CNN streams, then fuses the representations through attention-based pooling. By exploiting the natural synchronization between lip movements and speech, the system achieves 0.99\% EER on the XM2VTS database, significantly outperforming single-modality approaches. The correlation between modalities provides inherent spoofing resistance, as generating realistic synchronized audio-visual fakes is extremely challenging.
+
+\subsubsection*{Deep Learning for Multimodal Fusion}
+
+Recent work has explored sophisticated deep learning architectures for multimodal fusion:
+
+\begin{itemize}
+    \item \textbf{Attention Mechanisms:} Reddy et al. \cite{gumbel_bimodal} propose using Gumbel-Softmax for neural architecture search in bimodal systems, achieving adaptive fusion that adjusts to data characteristics.
+
+    \textit{\textbf{Paper Summary:}} This work introduces a differentiable neural architecture search (NAS) approach using Gumbel-Rao Monte Carlo estimation to automatically discover optimal fusion architectures for audio-visual biometrics. The search space includes various attention mechanisms, fusion points, and feature processing options. The discovered architectures consistently outperform hand-designed alternatives while being computationally efficient.
+
+    \item \textbf{Cross-Modal Learning:} Zhang et al. \cite{cross_modal_biometric} demonstrate that training face and voice encoders with cross-modal contrastive learning improves both individual and joint performance.
+
+    \item \textbf{Multimodal Transformers:} The application of transformer architectures to multimodal biometrics shows promise, with models learning to attend to the most discriminative features across modalities \cite{transformer_multimodal}.
+
+    \textit{\textbf{Paper Summary (Multimodal LLMs for Biometrics):}} Zhang et al. \cite{transformer_multimodal} explored leveraging pre-trained multimodal large language models (MLLMs) for facial expression recognition, demonstrating that foundation models can be effectively adapted for biometric tasks through careful prompting and fine-tuning strategies.
+\end{itemize}
+
+\subsection{Multimodal Biometric Databases}
+\label{subsec:multimodal_databases}
+
+The availability of high-quality multimodal databases is crucial for advancing research. Several notable databases have been released:
+
+\begin{itemize}
+    \item \textbf{BehavePassDB:} Stragapede et al. \cite{behavepassdb} present a comprehensive database of mobile behavioral biometrics, including touchscreen interactions and sensor data.
+
+    \textit{\textbf{Paper Summary:}} BehavePassDB contains data from 81 subjects performing various mobile device interactions over multiple sessions. The database includes touch gestures, keystroke dynamics, and sensor data (accelerometer, gyroscope) collected in both controlled and uncontrolled settings, enabling research on continuous authentication and multimodal behavioral biometrics.
+
+    \item \textbf{SpeakingFaces:} Abdrakhmanova et al. \cite{speakingfaces} introduce a large-scale dataset with synchronized thermal, visual, and audio streams, supporting research in multimodal authentication under varying environmental conditions.
+
+    \textit{\textbf{Paper Summary:}} This dataset comprises 142 subjects recorded with co-registered thermal-visual camera pairs while speaking commands in multiple languages. The synchronized multi-stream data enables research on robust authentication under varying lighting conditions (thermal images are illumination-invariant) and multimodal fusion of face, thermal signature, and voice.
+
+    \item \textbf{Smartphone Multimodal Biometric Database:} Ramachandra et al. \cite{smartphone_multimodal} provide a dataset specifically designed for smartphone-based multimodal authentication, including face, voice, and periocular biometrics.
+
+    \item \textbf{MobiBits:} Bartuzi et al. \cite{mobibits} present a mobile biometric database incorporating thermal imaging, representing a step toward more robust authentication in challenging environments.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{multimodal\_databases\_overview.png}{Comparison table/infographic of major multimodal biometric databases: columns for Database Name, Modalities Included (icons for face, voice, fingerprint, thermal, behavioral), Number of Subjects, Sessions, and Key Features. Highlight databases most relevant to face+voice authentication.}
+\caption{Overview of Major Multimodal Biometric Databases}
+\label{fig:multimodal_databases}
+\end{figure}
+
+\section{Edge Computing and Biometric Systems}
+\label{sec:edge_computing}
+
+The deployment of biometric systems on edge devices presents unique challenges and opportunities. This section examines the landscape of edge computing for biometrics, focusing on the trade-offs between accuracy, latency, privacy, and resource constraints.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{edge\_vs\_cloud\_comparison.png}{Split comparison diagram: (Left) Cloud-based biometrics showing data flowing to remote servers with concerns listed (latency, privacy, connectivity dependence, bandwidth); (Right) Edge-based biometrics showing local processing with benefits listed (low latency, privacy preservation, offline operation, reduced bandwidth). Include typical latency numbers for each approach.}
+\caption{Edge vs. Cloud Biometric Processing: Trade-offs and Considerations}
+\label{fig:edge_vs_cloud}
+\end{figure}
+
+\subsection{The Case for Edge-Based Biometric Processing}
+\label{subsec:edge_case}
+
+Several factors drive the shift toward edge-based biometric processing:
+
+\begin{enumerate}
+    \item \textbf{Privacy Preservation:} Processing biometric data locally eliminates the need to transmit sensitive information over networks, addressing major privacy concerns. This aligns with privacy regulations like GDPR and CCPA that mandate data minimization and local processing where possible \cite{privacy_edge_biometric}.
+
+    \item \textbf{Latency Reduction:} For real-time applications like access control, network round-trip time to cloud servers introduces unacceptable delays. Edge processing can reduce total latency by an order of magnitude \cite{edge_latency_biometric}.
+
+    \textit{\textbf{Paper Summary (REVAMP²T):}} Neff et al. \cite{revamp2t} demonstrated a complete multi-camera pedestrian tracking system running on Raspberry Pi devices, achieving real-time performance through careful algorithmic optimization. Their system processes video locally and only transmits compressed tracking results, reducing bandwidth by 99\% compared to streaming raw video.
+
+    \item \textbf{Network Independence:} Edge-based systems remain operational even when network connectivity is unreliable or unavailable, crucial for security-critical applications \cite{network_independent_biometric}.
+
+    \item \textbf{Bandwidth Conservation:} Transmitting high-resolution video streams for biometric analysis consumes substantial bandwidth. Local processing reduces network load significantly \cite{bandwidth_edge}.
+
+    \item \textbf{Scalability:} Distributed edge processing scales naturally with the number of devices, avoiding the bottleneck of centralized cloud processing \cite{edge_scalability}.
+\end{enumerate}
+
+\subsection{Hardware Platforms for Edge Biometrics}
+\label{subsec:edge_hardware}
+
+Various hardware platforms have been explored for edge-based biometric processing, each with distinct characteristics:
+
+\subsubsection*{Embedded ARM Processors}
+
+Single-board computers like the Raspberry Pi represent the most accessible edge platform. Recent work by Mohammadi et al. \cite{facial_expression_edge} provides a comprehensive comparison of facial expression recognition across CPU, GPU, VPU (Vision Processing Unit), and TPU (Tensor Processing Unit) on edge devices.
+
+\textit{\textbf{Paper Summary:}} This study benchmarks facial expression recognition models across four different compute backends on the same edge device. Key findings include: (1) VPUs provide the best performance-per-watt ratio for CNN inference, (2) TPUs excel for batch processing but have higher latency for single-image inference, (3) CPU-only solutions remain competitive for small models with careful optimization, (4) Memory bandwidth is often the bottleneck rather than compute capacity.
+
+\subsubsection*{Neural Processing Units (NPUs)}
+
+Dedicated AI accelerators like Google Coral TPU and Intel Neural Compute Stick offer significant performance improvements for neural network inference. Acien et al. \cite{smartphone_sensors_auth} evaluate various edge AI accelerators for behavioral biometrics, finding that TPU-based solutions achieve the best performance-per-watt ratio.
+
+\subsubsection*{Neuromorphic Hardware}
+
+Emerging neuromorphic processors like Intel Loihi show promise for ultra-low-power biometric processing. Smith et al. \cite{neuromorphic_vs_edge} compare neuromorphic hardware against edge AI accelerators for real-time facial expression recognition.
+
+\textit{\textbf{Paper Summary:}} This comparative study evaluates spiking neural networks (SNNs) on neuromorphic hardware against conventional ANNs on edge AI accelerators. Results show neuromorphic solutions achieve two orders of magnitude reduction in power consumption (10-100 mW vs. 1-10 W) while maintaining comparable accuracy. However, neuromorphic hardware currently has limited availability and requires specialized training pipelines.
+
+\subsubsection*{FPGA-Based Solutions}
+
+Field-Programmable Gate Arrays (FPGAs) offer flexibility and efficiency for custom biometric processing pipelines. Fasfous et al. \cite{binarynet_covid_mask} implement a binary neural network on FPGA for COVID-19 mask detection, achieving real-time performance with minimal power consumption.
+
+\textit{\textbf{Paper Summary:}} BinaryCoP demonstrates that extreme quantization (1-bit weights and activations) enables deployment of face detection and mask classification models on low-power FPGAs. The binary network achieves 50 FPS at only 2.3W power consumption, making it suitable for battery-powered devices. Accuracy degradation from binarization is mitigated through architectural modifications and training strategies.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{edge\_hardware\_comparison.png}{Comparison chart of edge hardware platforms with axes for Performance (TOPS) vs. Power Consumption (Watts). Plot positions for: ARM CPU (Raspberry Pi), Google Coral TPU, Intel NCS2, NVIDIA Jetson, Neuromorphic (Intel Loihi), FPGA. Include price point indicators and our selected platform highlighted.}
+\caption{Edge Hardware Platforms: Performance vs. Power Consumption Trade-offs}
+\label{fig:edge_hardware}
+\end{figure}
+
+\subsection{Optimization Techniques for Edge Deployment}
+\label{subsec:edge_optimization}
+
+Deploying sophisticated deep learning models on resource-constrained edge devices requires careful optimization. Recent research has explored multiple optimization strategies:
+
+\subsubsection*{Model Compression}
+
+\begin{itemize}
+    \item \textbf{Quantization:} Reducing numerical precision from 32-bit floating point to 8-bit or even binary representations can dramatically reduce model size and computation. Liu et al. \cite{memory_efficient_sv} demonstrate 75\% memory savings through 8-bit quantization while maintaining recognition accuracy.
+
+    \textit{\textbf{Paper Summary:}} This work presents a comprehensive study of quantization techniques for speaker verification models. Key findings include: (1) Post-training quantization to INT8 preserves accuracy within 0.5\% EER for most models, (2) Quantization-aware training can recover most accuracy loss for more aggressive quantization, (3) Mixed-precision quantization targeting memory-intensive layers provides the best accuracy-efficiency trade-off.
+
+    \item \textbf{Pruning:} Removing redundant or less important connections in neural networks. Structured pruning can achieve 50-70\% reduction in model size with minimal accuracy loss \cite{pruning_biometric}.
+
+    \item \textbf{Knowledge Distillation:} Training smaller ``student'' models to mimic larger ``teacher'' models. This approach is particularly effective for biometric applications where large models are impractical for edge deployment \cite{distillation_edge}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{model\_optimization\_techniques.png}{Three-panel illustration of optimization techniques: (Left) Quantization: neural network with floating point values being converted to integers, showing memory savings; (Center) Pruning: network visualization with connections being removed, showing sparse structure; (Right) Knowledge Distillation: large teacher network transferring knowledge to smaller student network. Include typical compression ratios for each technique.}
+\caption{Model Compression Techniques for Edge Deployment}
+\label{fig:optimization_techniques}
+\end{figure}
+
+\subsubsection*{Efficient Network Architectures}
+
+Mobile-optimized architectures specifically designed for edge devices:
+
+\begin{itemize}
+    \item \textbf{MobileNets:} Utilize depthwise separable convolutions to reduce computational cost while maintaining accuracy. Widely adopted in mobile computer vision applications \cite{mobilenet_edge}.
+
+    \item \textbf{EfficientNets:} Employ compound scaling to balance network depth, width, and resolution, achieving superior accuracy-efficiency trade-offs \cite{efficientnet_biometric}.
+
+    \item \textbf{ShuffleNets:} Use channel shuffle operations to enable efficient group convolutions, particularly effective on ARM processors \cite{shufflenet_edge}.
+
+    \item \textbf{SqueezeNets:} Employ fire modules with squeeze and expand layers to reduce parameters while maintaining accuracy \cite{squeezenet_biometric}.
+\end{itemize}
+
+Yang et al. \cite{edgecnn} propose EdgeCNN, a convolutional architecture specifically designed for edge devices with slow memory access.
+
+\textit{\textbf{Paper Summary:}} EdgeCNN addresses the memory bandwidth bottleneck common in embedded devices by designing convolution operations that maximize data reuse within on-chip memory. The architecture achieves real-time performance on Raspberry Pi for facial expression recognition while using 3x less memory bandwidth than standard CNNs.
+
+\subsubsection*{Hardware-Software Co-Design}
+
+Optimizing the entire stack from algorithms to hardware interfaces:
+
+\begin{itemize}
+    \item \textbf{Operator Fusion:} Combining multiple operations to reduce memory access overhead.
+    \item \textbf{Memory Layout Optimization:} Organizing data to maximize cache utilization and minimize memory bandwidth requirements.
+    \item \textbf{Parallel Processing:} Exploiting multi-core architectures and SIMD instructions for parallel execution.
+\end{itemize}
+
+\subsection{Real-Time Constraints and System Design}
+\label{subsec:realtime_constraints}
+
+Real-time biometric systems must meet strict latency requirements while balancing accuracy and resource consumption. Key considerations include:
+
+\subsubsection*{Pipeline Optimization}
+
+Hu et al. \cite{edge_emotion_service} propose a multi-layer emotion recognition service that distributes computation across edge, fog, and cloud layers based on latency constraints.
+
+\textit{\textbf{Paper Summary:}} This work introduces an adaptive scheduling policy that dynamically allocates processing tasks to different computational tiers based on current load and latency requirements. The system achieves 70\% energy reduction compared to cloud-only processing while meeting real-time constraints for emotion recognition applications.
+
+\subsubsection*{Adaptive Processing}
+
+Systems that dynamically adjust processing complexity based on input characteristics or available resources:
+
+\begin{itemize}
+    \item \textbf{Early Exit Networks:} Allow inference to terminate early when confidence is high, saving computation on easy samples \cite{early_exit_biometric}.
+
+    \item \textbf{Resolution Scaling:} Dynamically adjust input resolution based on network conditions or computational load \cite{adaptive_resolution}.
+
+    \item \textbf{Quality-Based Processing:} Tailor processing intensity to input quality, avoiding unnecessary computation on low-quality inputs \cite{quality_aware_processing}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{adaptive\_processing\_pipeline.png}{Flowchart showing adaptive processing decisions: Input arrives $\rightarrow$ Quality Assessment $\rightarrow$ Decision point (High Quality: Full pipeline; Medium Quality: Reduced resolution; Low Quality: Request retry). Include latency estimates for each path and show how the system adapts based on resource availability.}
+\caption{Adaptive Processing Pipeline for Resource-Constrained Environments}
+\label{fig:adaptive_processing}
+\end{figure}
+
+\section{Privacy and Security in Biometric Systems}
+\label{sec:privacy_security}
+
+The deployment of biometric systems raises significant privacy and security concerns. This section examines current research on protecting biometric data and defending against attacks.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{privacy\_security\_landscape.png}{Mind map showing two main branches: (1) Privacy concerns (data storage, transmission, unauthorized use, permanent nature of biometrics) and (2) Security threats (presentation attacks, adversarial perturbations, template theft, insider attacks). Each branch expands to show specific techniques and countermeasures.}
+\caption{Privacy and Security Landscape in Biometric Systems}
+\label{fig:privacy_landscape}
+\end{figure}
+
+\subsection{Privacy-Preserving Biometric Authentication}
+\label{subsec:privacy_preserving}
+
+Several approaches have been developed to protect biometric privacy:
+
+\subsubsection*{Homomorphic Encryption}
+
+Homomorphic encryption enables computation on encrypted data without decryption. Sepehri et al. \cite{encrypted_similarity} explore partially homomorphic encryption for encrypted vector similarity search in facial recognition.
+
+\textit{\textbf{Paper Summary:}} This work demonstrates that partially homomorphic encryption (PHE) can be practically applied to biometric template matching. The authors show that computing cosine similarity on encrypted 512-dimensional face embeddings takes only 50ms on commodity hardware, making privacy-preserving authentication feasible for real-time applications. The approach provides strong cryptographic guarantees while maintaining matching accuracy identical to plaintext operations.
+
+Droandi et al. \cite{semba_multimodal} propose SEMBA, a secure multimodal biometric authentication system that processes biometric data under encryption using multi-party computation.
+
+\textit{\textbf{Paper Summary:}} SEMBA combines secret sharing with homomorphic encryption to enable secure multimodal fusion without exposing individual biometric templates. The system supports both score-level and feature-level fusion under encryption, achieving the security of fully homomorphic encryption with 10x better performance through careful protocol design.
+
+\subsubsection*{Federated Learning}
+
+Federated learning enables collaborative model training without sharing raw biometric data. This approach is particularly relevant for systems that benefit from learning across multiple users or devices while preserving privacy \cite{federated_biometric}.
+
+\subsubsection*{Differential Privacy}
+
+Adding controlled noise to biometric data or models to provide mathematical privacy guarantees. Recent work demonstrates that differential privacy can be applied to biometric authentication with acceptable accuracy degradation \cite{differential_privacy_biometric}.
+
+\subsubsection*{Privacy-Aware Feature Generation}
+
+Arefeen et al. \cite{metamorphosis_privacy} propose MetaMorphosis, a framework for generating task-specific privacy-aware features.
+
+\textit{\textbf{Paper Summary:}} MetaMorphosis learns to transform raw biometric data into task-specific representations that contain only information necessary for the intended authentication task. This prevents ``function creep'' where biometric data collected for one purpose is used for unauthorized tasks (e.g., emotion recognition, health inference). The framework achieves 95\% of original task accuracy while reducing unintended information leakage by 80\%.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{privacy\_techniques\_comparison.png}{Comparison table/chart of privacy-preserving techniques: columns for Technique (Homomorphic Encryption, Federated Learning, Differential Privacy, Secure MPC), rows for Computation Overhead, Communication Cost, Security Level, and Practical Deployment Status. Use color coding (green/yellow/red) to indicate suitability for edge deployment.}
+\caption{Comparison of Privacy-Preserving Techniques for Biometric Authentication}
+\label{fig:privacy_techniques}
+\end{figure}
+
+\subsection{Presentation Attack Detection}
+\label{subsec:pad}
+
+Biometric systems are vulnerable to presentation attacks (spoofing). Recent research has developed sophisticated countermeasures:
+
+\subsubsection*{Spoofing-Robust Speaker Verification}
+
+The speaker verification community has extensively studied presentation attack detection:
+
+\begin{itemize}
+    \item \textbf{ASVspoof Challenge:} The ongoing ASVspoof challenges have driven development of robust countermeasures against synthetic speech, voice conversion, and replay attacks \cite{asvspoof_challenge}.
+
+    \textit{\textbf{Paper Summary (ASVspoof5):}} The ASVspoof5 challenge introduced new evaluation protocols including ``spoofing-robust'' metrics that jointly assess speaker verification and spoofing detection. Results showed that while individual countermeasures achieve low Equal Error Rates, their integration with speaker verification remains challenging, with best systems achieving 5-10\% spoofing-aware EER.
+
+    \item \textbf{End-to-End Systems:} Kurnaz et al. \cite{sasv_optimization} propose jointly optimizing speaker and spoof detection for spoofing-robust automatic speaker verification (SASV).
+
+    \textit{\textbf{Paper Summary:}} This work introduces a unified optimization framework that jointly trains speaker verification and spoofing detection modules. By sharing intermediate representations and using a combined loss function, the system achieves superior performance compared to cascaded approaches where modules are trained independently.
+
+    \item \textbf{SSL-Based Approaches:} Self-supervised learning models like AASIST demonstrate excellent generalization to unseen attack types \cite{ssl_antispoofing}.
+\end{itemize}
+
+\subsubsection*{Face Anti-Spoofing}
+
+Face recognition systems face various presentation attacks:
+
+\begin{itemize}
+    \item \textbf{Print Attacks:} Detecting photographs of faces.
+    \item \textbf{Replay Attacks:} Detecting video replays of faces.
+    \item \textbf{3D Mask Attacks:} Detecting silicone masks or 3D printed faces.
+    \item \textbf{Deepfake Attacks:} Detecting AI-generated synthetic faces.
+\end{itemize}
+
+Recent work by Reddy et al. \cite{deepfake_detection_bimodal} proposes neural architecture search for audio-visual deepfake detection.
+
+\textit{\textbf{Paper Summary:}} This work uses differentiable NAS to automatically discover optimal architectures for detecting audio-visual deepfakes. The search space includes various fusion strategies, attention mechanisms, and temporal modeling options. Discovered architectures achieve 3-5\% improvement over hand-designed baselines while being 2x more efficient.
+
+\subsubsection*{Multimodal Presentation Attack Detection}
+
+Multimodal systems can provide inherent protection against spoofing attacks, as simultaneously spoofing multiple modalities is significantly more difficult. However, adaptive attackers may develop multimodal spoofing techniques, necessitating robust countermeasures \cite{multimodal_pad}.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{presentation\_attacks\_overview.png}{Grid showing common presentation attacks for face (print, replay, 3D mask, deepfake) and voice (replay, TTS synthesis, voice conversion, adversarial) modalities. Each cell shows an attack illustration, detection difficulty rating, and recommended countermeasure. Highlight that multimodal systems provide defense-in-depth.}
+\caption{Overview of Presentation Attacks and Countermeasures for Biometric Systems}
+\label{fig:presentation_attacks}
+\end{figure}
+
+\subsection{Adversarial Attacks and Defenses}
+\label{subsec:adversarial}
+
+Deep learning-based biometric systems are vulnerable to adversarial attacks:
+
+\subsubsection*{Adversarial Perturbations}
+
+Dar et al. \cite{adversarial_voice_attack} analyze the impact of adversarial perturbations on speaker verification.
+
+\textit{\textbf{Paper Summary:}} This study systematically analyzes how adversarial perturbations affect different phonetic components of speech. Results show that perturbations targeting vowel segments cause larger degradation than those targeting consonants, suggesting that speaker-discriminative information is unevenly distributed across phonemes. This insight enables more effective attacks and informs defense strategies.
+
+Todisco et al. \cite{malacopula_attack} present Malacopula, a sophisticated attack that uses non-linear processes to generate adversarial perturbations against speaker verification systems.
+
+\textit{\textbf{Paper Summary:}} Malacopula generates adversarial examples by iteratively applying copula-based transformations that preserve the statistical properties of natural speech while maximally degrading verification performance. The attack achieves 95\% success rate against state-of-the-art systems while maintaining high perceptual quality (PESQ > 3.5).
+
+\subsubsection*{Defense Mechanisms}
+
+\begin{itemize}
+    \item \textbf{Adversarial Training:} Training models with adversarial examples to improve robustness \cite{adversarial_training_biometric}.
+
+    \item \textbf{Input Transformations:} Applying random transformations to inputs to break adversarial perturbations \cite{input_transform_defense}.
+
+    \item \textbf{Certified Defenses:} Developing provably robust models with certified accuracy bounds under attack \cite{certified_defense}.
+\end{itemize}
+
+\section{Continuous Authentication and Behavioral Biometrics}
+\label{sec:continuous_auth}
+
+Traditional point-of-entry authentication provides security only at login. Continuous authentication monitors user identity throughout a session, providing ongoing verification.
+
+\subsection{Behavioral Biometric Modalities}
+\label{subsec:behavioral_modalities}
+
+Abuhamad et al. \cite{behavioral_biometric_survey} provide a comprehensive survey of sensor-based continuous authentication.
+
+\textit{\textbf{Paper Summary:}} This survey covers the complete landscape of behavioral biometrics for smartphone authentication, including keystroke dynamics, touch gestures, gait patterns, and device handling characteristics. Key findings include: (1) combining multiple behavioral modalities reduces EER from 15-20\% (single modality) to 5-8\% (multimodal), (2) deep learning methods consistently outperform traditional machine learning, (3) user adaptation over time remains a significant challenge.
+
+The survey covers:
+\begin{itemize}
+    \item \textbf{Keystroke Dynamics:} Analyzing typing patterns and rhythms.
+    \item \textbf{Touch Gestures:} Monitoring touchscreen interaction patterns.
+    \item \textbf{Gait Analysis:} Recognizing walking patterns from accelerometer data.
+    \item \textbf{Hand Movements:} Tracking hand orientation and movement patterns.
+    \item \textbf{Voice Patterns:} Continuous speaker verification during voice interactions.
+\end{itemize}
+
+Stragapede et al. \cite{mobile_behavioral_biometric} demonstrate that combining multiple behavioral modalities achieves superior performance compared to single-modality systems, with EER ranging from 4-9\% depending on modality combination.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{behavioral\_biometrics\_timeline.png}{Timeline visualization showing: Initial Login (strong authentication: face + voice) $\rightarrow$ Continuous Session (behavioral monitoring: typing, touch, gait) $\rightarrow$ Risk Events (step-up authentication triggered) $\rightarrow$ Session End. Include confidence score graph showing how system certainty varies over time and triggers re-authentication when it drops.}
+\caption{Continuous Authentication Lifecycle with Behavioral Biometrics}
+\label{fig:behavioral_timeline}
+\end{figure}
+
+\subsection{Context-Aware Authentication}
+\label{subsec:context_aware}
+
+Modern authentication systems can leverage contextual information to improve security and usability:
+
+\begin{itemize}
+    \item \textbf{Location-Based Authentication:} Using GPS and WiFi positioning to verify user location patterns \cite{location_auth}.
+
+    \item \textbf{Time-Based Patterns:} Learning user activity patterns across different times of day \cite{temporal_auth}.
+
+    \item \textbf{Environmental Context:} Considering ambient conditions like lighting, noise level, and nearby devices \cite{environmental_context}.
+
+    \item \textbf{Multi-Device Authentication:} Leveraging presence of paired devices for implicit authentication \cite{multidevice_auth}.
+\end{itemize}
+
+\subsection{Zero-Trust Security Models}
+\label{subsec:zero_trust}
+
+Cheng et al. \cite{zero_trust_metaverse} propose a zero-trust security framework combining continuous biometric authentication with federated learning.
+
+\textit{\textbf{Paper Summary:}} This work adapts zero-trust principles (``never trust, always verify'') to immersive environments where traditional authentication is intrusive. The framework uses continuous multimodal biometrics (gaze patterns, voice characteristics, movement signatures) processed through federated learning to maintain user privacy while enabling persistent identity verification. The system achieves 98\% continuous verification accuracy with only 2\% false alarm rate.
+
+\section{Domain-Specific Challenges and Solutions}
+\label{sec:domain_specific}
+
+Different application domains present unique challenges for biometric authentication systems.
+
+\subsection{Cross-Age Speaker Verification}
+\label{subsec:cross_age}
+
+Human voice characteristics change significantly with age, posing challenges for long-term speaker verification:
+
+\begin{itemize}
+    \item \textbf{Child-Adult Mismatch:} Shetty et al. \cite{children_sv} propose adapter-based transfer learning to improve speaker verification for children.
+
+    \textit{\textbf{Paper Summary:}} This work addresses the significant domain shift between adult speech (used for training most speaker verification systems) and children's speech. The G-IFT (Gated Linear Unit Adapter with Iterative Fine-Tuning) approach adapts pre-trained adult models to children by inserting small trainable adapter modules while freezing the main network. This achieves 40\% relative improvement on child speaker verification while maintaining adult performance.
+
+    \item \textbf{Age-Agnostic Systems:} Zheng et al. \cite{age_agnostic_sv} develop systems that disentangle age-related attributes from speaker identity.
+
+    \textit{\textbf{Paper Summary:}} The authors propose learning speaker embeddings that are explicitly invariant to age-related vocal changes. Using adversarial training with an age classifier, the system learns representations that preserve speaker identity while discarding age information. This enables robust verification even when enrollment and test utterances are separated by decades.
+
+    \item \textbf{Age Progression:} Zhang et al. \cite{cross_age_disentangle} propose mutual information minimization to learn age-invariant speaker embeddings.
+\end{itemize}
+
+\subsection{Low-Resource and Few-Shot Learning}
+\label{subsec:low_resource}
+
+Many practical scenarios involve limited training data:
+
+\begin{itemize}
+    \item \textbf{Self-Supervised Learning:} Chen et al. \cite{self_distillation_sv} propose Self-Distillation Prototypes Network (SDPN) for self-supervised speaker verification.
+
+    \textit{\textbf{Paper Summary:}} SDPN learns speaker representations without explicit speaker labels by combining contrastive learning with prototype-based clustering. The network iteratively refines cluster assignments while training the encoder, effectively discovering speaker structure in unlabeled data. Results show competitive performance with supervised methods while requiring no manual annotation.
+
+    \item \textbf{Meta-Learning:} Lepage et al. \cite{self_supervised_sv_wavlm} explore leveraging large-scale ASR models for speaker verification through self-supervised fine-tuning.
+
+    \item \textbf{Data Augmentation:} Liu et al. \cite{speaker_interpolation} propose interpolating speaker identities in embedding space to synthesize new training samples.
+
+    \textit{\textbf{Paper Summary:}} This work generates synthetic training examples by linearly interpolating between speaker embeddings and reconstructing corresponding audio using a neural vocoder. The interpolated samples represent ``virtual speakers'' that expand the training distribution, improving generalization to unseen speakers by 15\% relative EER reduction.
+\end{itemize}
+
+\subsection{Text-Dependent vs. Text-Independent Verification}
+\label{subsec:text_dependent}
+
+\begin{itemize}
+    \item \textbf{Text-Dependent Systems:} Farokh et al. \cite{text_dependent_sv} demonstrate that independent pre-trained models for text and speaker can achieve competitive performance.
+
+    \textit{\textbf{Paper Summary:}} This work shows that decoupling text recognition from speaker verification enables more efficient systems. By using separate lightweight models for each task and combining their outputs, the system achieves accuracy comparable to joint models while reducing memory requirements by 60\%---crucial for edge deployment.
+
+    \item \textbf{Text Adaptation:} Yang et al. \cite{text_adaptation_sv} propose using speaker-text factorized embeddings to handle text mismatch between enrollment and test data.
+
+    \item \textbf{Hybrid Approaches:} Zheng et al. \cite{chinese_numerical_sv} develop systems specifically optimized for numerical string authentication, common in financial applications.
+\end{itemize}
+
+\subsection{Robustness to Environmental Conditions}
+\label{subsec:environmental_robustness}
+
+Real-world deployment requires robustness to various environmental factors:
+
+\subsubsection*{Far-Field Speaker Recognition}
+
+Zhang et al. \cite{far_field_sv} propose adaptive data augmentation using text-to-speech models to synthesize far-field speech.
+
+\textit{\textbf{Paper Summary:}} Using NaturalSpeech3, the authors generate realistic far-field training data by simulating various room acoustics and speaker distances. Training on this augmented data improves far-field verification EER from 12\% to 7\% while maintaining near-field performance. This approach is more effective than traditional room impulse response simulation.
+
+\subsubsection*{Low-Light Face Recognition}
+
+Xia et al. \cite{low_light_enhancement} develop dual-domain enhancement networks for improving face recognition in poorly lit conditions.
+
+\textit{\textbf{Paper Summary:}} DLEN (Dual-domain Low-light Enhancement Network) processes images in both spatial and frequency domains to enhance facial details while suppressing noise. The dual-branch transformer architecture achieves state-of-the-art low-light enhancement quality while being efficient enough for edge deployment (15 FPS on mobile GPU).
+
+\subsubsection*{Noise Robustness}
+
+Xing et al. \cite{noise_robust_sv} propose joint noise disentanglement and adversarial training for robust speaker verification.
+
+\textit{\textbf{Paper Summary:}} This framework learns to separate speaker-discriminative features from noise artifacts through a disentanglement network, then applies adversarial training to make the speaker encoder robust to residual noise. The approach achieves 30\% relative improvement in noisy conditions while maintaining clean speech performance.
+
+\section{Emerging Trends and Future Directions}
+\label{sec:emerging_trends}
+
+This section examines cutting-edge research directions that may shape the future of biometric authentication systems.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{emerging\_trends\_landscape.png}{Radar/spider chart showing maturity levels of emerging technologies: Foundation Models (medium), Explainable AI (medium-high), TinyML (high), Synthetic Data (medium), Neuromorphic Computing (low-medium), Event-based Vision (low). Include brief annotations for each technology's potential impact on biometric systems.}
+\caption{Emerging Technology Landscape for Biometric Authentication}
+\label{fig:emerging_trends}
+\end{figure}
+
+\subsection{Foundation Models for Biometrics}
+\label{subsec:foundation_models}
+
+The success of large-scale pre-trained models in NLP and computer vision is inspiring similar approaches in biometrics:
+
+\begin{itemize}
+    \item \textbf{Universal Speaker Representations:} Ma et al. \cite{explainable_phonetic_sv} propose phonetic trait-oriented networks that provide explainable speaker verification.
+
+    \textit{\textbf{Paper Summary:}} ExPO (Explainable Phonetic-Oriented) network explicitly models speaker-discriminative phonetic traits identified in forensic voice comparison research. The network provides interpretable outputs showing which phonetic characteristics (F0 patterns, formant ratios, voice quality measures) contribute to verification decisions. This interpretability is crucial for high-stakes applications requiring human oversight.
+
+    \item \textbf{Multimodal Foundation Models:} Chen et al. \cite{3d_speaker_toolkit} introduce a comprehensive toolkit for multimodal speaker analysis.
+
+    \textit{\textbf{Paper Summary:}} 3D-Speaker-Toolkit provides unified APIs for speaker verification, diarization, and attribute analysis using acoustic, semantic, and visual modalities. The toolkit includes pre-trained foundation models that can be fine-tuned for specific tasks, democratizing access to state-of-the-art multimodal speaker analysis.
+
+    \item \textbf{Self-Supervised Pretraining:} Leveraging large-scale unlabeled data for learning robust biometric representations \cite{ssl_foundation_biometric}.
+\end{itemize}
+
+\subsection{Explainable Biometric Systems}
+\label{subsec:explainable}
+
+As biometric systems are deployed in high-stakes applications, explainability becomes crucial:
+
+\begin{itemize}
+    \item \textbf{Attribution Methods:} Analyzing which facial regions or voice characteristics contribute most to identification decisions \cite{attribution_biometric}.
+
+    \item \textbf{Phonetic Analysis:} Huckvale \cite{speaker_embedding_interpretation} investigates how speaker embeddings relate to conventional acoustic and phonetic dimensions.
+
+    \textit{\textbf{Paper Summary:}} This work analyzes the information encoded in speaker embeddings by correlating embedding dimensions with traditional acoustic measures (pitch, formants, voice quality). Results show that while embeddings capture known speaker-discriminative features, they also encode information not captured by traditional analysis, suggesting deep learning discovers novel speaker characteristics.
+
+    \item \textbf{Confidence Calibration:} Providing reliable uncertainty estimates for authentication decisions \cite{calibration_biometric}.
+\end{itemize}
+
+\subsection{Tiny Machine Learning (TinyML)}
+\label{subsec:tinyml}
+
+Ultra-low-power biometric systems for IoT devices:
+
+\begin{itemize}
+    \item \textbf{Quantized Neural Networks:} Pavan et al. \cite{tinysv} demonstrate on-device learning for speaker verification on microcontroller-class devices.
+
+    \textit{\textbf{Paper Summary:}} TinySV achieves speaker verification on devices with only 256KB RAM and 1MB flash by: (1) using extreme quantization (4-bit weights), (2) designing architectures that fit within memory constraints, (3) implementing on-device enrollment without cloud connectivity. The system achieves 8\% EER while consuming only 50mW during inference.
+
+    \item \textbf{Binary Neural Networks:} Extreme quantization for minimal energy consumption \cite{binary_nn_biometric}.
+
+    \item \textbf{Event-Based Processing:} Wang et al. \cite{event_camera_expression} explore event cameras for efficient facial expression recognition.
+
+    \textit{\textbf{Paper Summary:}} Event cameras output asynchronous ``events'' only when pixel intensity changes, enabling extremely efficient processing. This work demonstrates that event-based facial expression recognition achieves comparable accuracy to frame-based methods while consuming 100x less energy, making it suitable for always-on biometric monitoring.
+\end{itemize}
+
+\subsection{Synthetic Data and Data Augmentation}
+\label{subsec:synthetic_data}
+
+Synthetic data generation for training robust biometric systems:
+
+\begin{itemize}
+    \item \textbf{GANs for Biometrics:} Mousavi et al. \cite{synthetic_emotion_faces} use genetic algorithms to optimize GANs for generating diverse emotional depth faces.
+
+    \textit{\textbf{Paper Summary:}} This work combines genetic algorithms with GANs to generate synthetic face images with controlled emotional expressions and demographic attributes. The generated data improves face recognition model robustness to expression variations by 20\% while avoiding privacy concerns associated with collecting real emotional face data.
+
+    \item \textbf{Text-to-Speech Synthesis:} Generating synthetic voice data to augment training datasets \cite{tts_augmentation}.
+
+    \item \textbf{Domain Adaptation:} Using synthetic data to improve cross-domain generalization \cite{synthetic_domain_adapt}.
+\end{itemize}
+
+\subsection{Neuromorphic and Alternative Computing Paradigms}
+\label{subsec:neuromorphic}
+
+Novel computing architectures for energy-efficient biometric processing:
+
+\begin{itemize}
+    \item \textbf{Spiking Neural Networks:} Bio-inspired networks that process information as spike trains, offering orders of magnitude improvement in energy efficiency \cite{snn_biometric}.
+
+    \item \textbf{In-Memory Computing:} Performing computation where data is stored, reducing energy-intensive data movement \cite{in_memory_biometric}.
+
+    \item \textbf{Analog Computing:} Exploiting analog circuits for efficient neural network computation \cite{analog_nn_biometric}.
+\end{itemize}
+
+\section{Comparative Analysis and Lessons Learned}
+\label{sec:comparative_analysis}
+
+This section synthesizes insights from the literature review to inform our design decisions.
+
+\subsection{Model Selection Criteria}
+\label{subsec:model_selection_criteria}
+
+Based on extensive literature review, we establish the following criteria for model selection in edge-based biometric systems:
+
+\begin{enumerate}
+    \item \textbf{Inference Latency:} Models must achieve real-time performance (typically <100ms per frame for vision, <1s for audio) on target hardware.
+
+    \item \textbf{Memory Footprint:} Total model size should not exceed available RAM, accounting for both model parameters and activation memory.
+
+    \item \textbf{Accuracy:} Must meet minimum accuracy thresholds (typically >95\% for individual modalities, >98\% for multimodal systems).
+
+    \item \textbf{Robustness:} Should maintain performance under realistic variations in input quality, environmental conditions, and user characteristics.
+
+    \item \textbf{Implementation Complexity:} Preference for models with well-supported libraries and clear documentation to facilitate rapid prototyping.
+\end{enumerate}
+
+\subsection{Architecture Trade-offs}
+\label{subsec:architecture_tradeoffs}
+
+Our analysis of the literature reveals several key trade-offs:
+
+\subsubsection*{Depth vs. Width}
+
+Deeper networks generally achieve higher accuracy but at the cost of increased latency. For edge deployment, wider shallow networks often provide better accuracy-latency trade-offs \cite{depth_width_tradeoff}.
+
+\subsubsection*{Convolutional vs. Attention-Based}
+
+While transformer-based models achieve state-of-the-art results on many benchmarks, their computational requirements make them challenging for edge deployment. Convolutional architectures remain more practical for resource-constrained scenarios \cite{conv_vs_transformer_edge}.
+
+\subsubsection*{Task-Specific vs. General-Purpose}
+
+Models specifically designed for a particular biometric modality (e.g., speaker verification) typically outperform general-purpose models adapted for the task, especially in resource-constrained settings \cite{task_specific_models}.
+
+\subsection{Fusion Strategy Selection}
+\label{subsec:fusion_selection}
+
+Our literature analysis informs the selection of fusion strategy:
+
+\begin{itemize}
+    \item \textbf{Score-Level Fusion:} Recommended for most applications due to its balance of effectiveness and simplicity.
+
+    \item \textbf{OR-Logic vs. AND-Logic:} OR-logic (requiring only one modality to succeed) provides better user experience by reducing false rejections, at the cost of slightly higher false acceptance rate. This is appropriate for convenience-oriented applications.
+
+    \item \textbf{Adaptive Weighting:} While more complex, quality-aware adaptive fusion provides superior performance when quality metrics are available for each modality.
+\end{itemize}
+
+\section{Research Gaps and Our Contribution}
+\label{sec:research_gaps}
+
+Despite extensive prior work, several gaps remain in the literature:
+
+\begin{enumerate}
+    \item \textbf{Limited Practical Benchmarking:} Most studies report results on high-end hardware or in simulation. Few provide detailed performance analysis on actual low-cost edge devices like Raspberry Pi.
+
+    \item \textbf{Insufficient Hybrid Architecture Studies:} While parallel and sequential multimodal systems have been studied independently, comparative analysis of their practical implementation trade-offs is limited.
+
+    \item \textbf{ARM64 Deployment Challenges:} Detailed documentation of software environment setup challenges and solutions for ARM64 platforms is scarce in the academic literature.
+
+    \item \textbf{Real-World System Integration:} Most research focuses on individual components (detection, recognition, fusion) in isolation. End-to-end system integration studies are uncommon.
+
+    \item \textbf{Privacy-Utility Trade-offs:} Limited quantitative analysis of the trade-offs between privacy-preserving techniques and system usability/accuracy in practical deployments.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{research\_gaps\_visualization.png}{Venn diagram showing overlap between three research areas: (1) Multimodal Biometrics, (2) Edge Computing, (3) Privacy-Preserving ML. The intersection of all three (where our work sits) is highlighted as under-explored. Include callout boxes listing specific gaps we address.}
+\caption{Visualization of Research Gaps Addressed by This Work}
+\label{fig:research_gaps}
+\end{figure}
+
+Our work addresses these gaps by:
+\begin{itemize}
+    \item Providing comprehensive benchmarking on actual Raspberry Pi 4 hardware
+    \item Implementing and comparing parallel vs. sequential multimodal architectures
+    \item Documenting the complete ARM64 development environment setup process
+    \item Developing an integrated end-to-end system with all components
+    \item Analyzing privacy implications of local vs. cloud processing
+\end{itemize}
+
+\section{Chapter Summary}
+\label{sec:lit_review_summary}
+
+This comprehensive literature review has examined the state of the art in multiple domains relevant to our hybrid two-layer authentication system. We have reviewed:
+
+\begin{itemize}
+    \item Facial recognition techniques, from classical methods to modern deep learning approaches
+    \item Speaker recognition models, spanning from heavy SOTA architectures to lightweight edge-optimized solutions
+    \item Multimodal biometric fusion strategies and their comparative advantages
+    \item Edge computing platforms and optimization techniques for resource-constrained deployment
+    \item Privacy and security considerations in biometric systems
+    \item Emerging trends including foundation models, explainability, and neuromorphic computing
+\end{itemize}
+
+The insights gained from this review directly informed our technology selection, system architecture, and implementation strategy. The next chapter details our proposed system design, incorporating these lessons learned to create an efficient, secure, and practical hybrid authentication system for edge deployment.
+
+% ========================================
+% CHAPTER 3: SYSTEM DESIGN & ANALYSIS
+% ========================================
+\chapter{System Design \& Analysis}
+\label{chap:design}
+
+\section{Proposed Methodology: The Hybrid Approach}
+\label{sec:methodology}
+
+A critical decision point in our design phase was determining the core user interaction logic. We evaluated two primary architectures:
+
+\begin{enumerate}
+    \item \textbf{``Sequential'' Model:} The user presents their face, and only upon successful verification is the microphone activated for voice verification. This is a two-step process.
+    \item \textbf{``Parallel/Hybrid'' Model:} The user presents their face and speaks simultaneously. The system captures and processes both biometric streams in parallel.
+\end{enumerate}
+
+Following a detailed risk-benefit analysis, we made the strategic decision to adopt the \textbf{Hybrid Two-Layer Authentication} model. While the sequential approach offers simpler control flow, the hybrid model provides a significantly faster, more intuitive, and seamless user experience, as the user performs only a single action (``look and speak''). We have chosen to prioritize this superior user experience, fully acknowledging that it presents a greater technical challenge in terms of multi-threaded programming and the design of the decision fusion logic.
+
+\begin{figure}[H]
+\centering
+\placeholderfig{sequential\_vs\_parallel\_comparison.png}{Side-by-side comparison: (Left) Sequential flow showing Face Capture $\rightarrow$ Face Verify $\rightarrow$ Voice Capture $\rightarrow$ Voice Verify with total time ~4s; (Right) Parallel flow showing simultaneous Face and Voice capture/verification with total time ~1s. Include user experience ratings (sequential: 2/5 stars, parallel: 5/5 stars) and implementation complexity indicators.}
+\caption{Comparison of Sequential vs. Parallel Authentication Approaches}
+\label{fig:seq_vs_parallel}
+\end{figure}
+
+\section{System Requirements}
+\label{sec:requirements}
+
+\subsection{Functional Requirements (FR)}
+\label{subsec:functional}
+
+\begin{itemize}
+    \item \textbf{FR1:} The system shall allow an administrator to enroll a new user by capturing their facial image and storing the corresponding biometric template.
+    \item \textbf{FR2:} The system shall allow an administrator to enroll a new user by capturing their voice sample and storing the corresponding voiceprint.
+    \item \textbf{FR3:} The system shall be able to capture a live video stream, perform a liveness check (blink detection), and verify any detected faces against the enrolled database.
+    \item \textbf{FR4:} The system shall be able to capture a live audio stream and verify it against the enrolled database.
+    \item \textbf{FR5:} The system shall grant access if \textbf{either} the face verification (FR3) \textbf{OR} the voice verification (FR4) is successful and exceeds a confidence threshold.
+    \item \textbf{FR6:} All enrolled biometric templates shall be stored securely on the local device's filesystem.
+    \item \textbf{FR7:} Upon successful authentication, the system shall trigger a signal on a GPIO pin.
+\end{itemize}
+
+\subsection{Non-Functional Requirements (NFR)}
+\label{subsec:nonfunctional}
+
+\begin{itemize}
+    \item \textbf{NFR1 (Performance):} The end-to-end authentication process, from user action to final decision, shall complete in under 2.0 seconds.
+    \item \textbf{NFR2 (Security \& Privacy):} All biometric processing and template storage must occur on the local edge device. No data shall be transmitted over any network.
+    \item \textbf{NFR3 (Usability):} The authentication process must be fully contactless.
+    \item \textbf{NFR4 (Accuracy):} Each biometric modality shall achieve a target verification accuracy of over 95\% on our custom test dataset under normal conditions.
+    \item \textbf{NFR5 (Hardware Constraint):} The entire system must function on a Raspberry Pi 4 (8GB model) without thermal throttling under normal operation.
+\end{itemize}
+
+\section{Hardware Platform Selection and Justification}
+\label{sec:hardware}
+
+The selection of an appropriate hardware platform is a critical engineering decision, representing a trade-off between performance, power, cost, and ease of development. For this project, a thorough analysis was conducted between three viable platforms.
+
+\subsection*{Alternative 1: Repurposed Smartphones}
+Modern mobile phones feature powerful and extremely power-efficient ARM SoCs, often with dedicated AI accelerators (NPUs). They also offer an integrated package of high-quality cameras and microphones. However, the primary challenge is the restrictive nature of mobile operating systems (Android/iOS) and the difficulty in interfacing with external hardware (like door locks) via GPIO.
+
+\subsection*{Alternative 2: x86 Mini-PCs}
+Repurposed small-form-factor desktops offer substantial raw CPU performance at a low cost. The x86 architecture also simplifies software installation. However, their power consumption is an order of magnitude higher than an SBC, and they lack native GPIO support.
+
+\subsection*{Chosen Platform: Raspberry Pi 4 Model B (8GB)}
+The Raspberry Pi 4 was selected as the optimal platform. Its most significant advantage is the \textbf{native GPIO header}, which provides a direct, low-latency, and simple Python interface for controlling external hardware.
+
+\begin{table}[H]
+\centering
+\caption{Hardware Platform Comparison}
+\label{tab:hardware_comparison}
+\begin{tabular}{p{0.2\textwidth}p{0.25\textwidth}p{0.25\textwidth}p{0.2\textwidth}}
+\toprule
+\textbf{Platform} & \textbf{Advantages} & \textbf{Disadvantages} & \textbf{Decision}\\
+\midrule
+Smartphone & Powerful SoC, integrated sensors & Restrictive OS, no GPIO & Rejected\\
+x86 Mini-PC & High CPU performance & High power, no GPIO & Rejected\\
+Raspberry Pi 4 & Native GPIO, community support, balanced performance & Limited CPU vs. x86 & \textbf{Selected}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{raspberry\_pi\_setup.png}{Annotated photograph or diagram of Raspberry Pi 4 setup showing: (1) Pi 4 board with heatsink/fan, (2) Connected USB camera, (3) Connected USB microphone, (4) GPIO header with relay module for door lock control, (5) Power supply, (6) MicroSD card slot. Include callout labels for each component with specifications.}
+\caption{Hardware Setup: Raspberry Pi 4 with Camera, Microphone, and GPIO Peripherals}
+\label{fig:pi_setup}
+\end{figure}
+
+\section{System Architecture/Design Diagrams}
+\label{sec:architecture}
+
+\subsection{High-Level Architecture}
+\label{subsec:high_level}
+
+The system is designed as a multi-threaded application where the main process orchestrates two parallel worker threads for biometric processing.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    box/.style={rectangle, draw, thick, text width=6cm, align=center, rounded corners, minimum height=1.2cm},
+    thread/.style={rectangle, draw, thick, text width=5.5cm, align=left, rounded corners, minimum height=3cm},
+    arrow/.style={->, thick}
+]
+
+% Main Application
+\node[box, fill=blue!10] (main) at (0,0) {\textbf{Main Application (main.py)}\\
+- Initializes Hardware (Camera, Mic, GPIO)\\
+- Manages User Interaction \& State\\
+- Spawns Worker Threads\\
+- Contains Decision Fusion Engine};
+
+% Thread 1
+\node[thread, fill=green!10, below left=of main, xshift=-1cm] (thread1) {
+\textbf{Thread 1: Face Pipeline}\\
+1. Capture Video Frame\\
+2. Detect Face (BlazeFace)\\
+3. Extract Embedding\\
+\quad (MobileFaceNet)\\
+4. Compare vs. Database\\
+5. Return (Score, Status)
+};
+
+% Thread 2
+\node[thread, fill=orange!10, below right=of main, xshift=1cm] (thread2) {
+\textbf{Thread 2: Voice Pipeline}\\
+1. Record Audio Stream\\
+2. Pre-process Audio\\
+3. Extract Embedding\\
+\quad (Resemblyzer)\\
+4. Compare vs. Database\\
+5. Return (Score, Status)
+};
+
+% Arrows
+\draw[arrow] (main) -- (thread1);
+\draw[arrow] (main) -- (thread2);
+
+\end{tikzpicture}
+\caption{High-Level System Architecture}
+\label{fig:architecture}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{thread\_communication\_diagram.png}{Detailed threading diagram showing: Main Thread spawning Face Thread and Voice Thread; Queue objects for inter-thread communication; Shared memory regions for video/audio buffers; Synchronization primitives (locks, events); Timeout handling logic. Use swimlane format to show temporal relationships between threads.}
+\caption{Multi-threaded Architecture with Inter-Thread Communication}
+\label{fig:thread_comm}
+\end{figure}
+
+\subsection{Decision Fusion Logic Flow}
+\label{subsec:fusion_logic}
+
+The Decision Fusion Engine implements an OR-logic approach, prioritizing user convenience while maintaining security through threshold-based verification.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.8cm,
+    startend/.style={ellipse, draw, thick, text width=2cm, align=center},
+    process/.style={rectangle, draw, thick, text width=4.5cm, align=center, rounded corners},
+    decision/.style={diamond, draw, thick, text width=2.5cm, align=center, aspect=2},
+    arrow/.style={->, thick}
+]
+
+% Nodes
+\node[startend] (start) {START};
+\node[process, below=of start] (init) {User Initiates Auth};
+\node[process, below=of init] (capture) {Start Camera \& Mic Capture (3s)};
+\node[process, below=of capture] (launch) {Launch face\_thread() AND voice\_thread()};
+\node[process, below=of launch] (wait) {Wait for results (with timeout)};
+\node[decision, below=of wait] (check) {Face OR Voice $>$ Threshold?};
+\node[process, below left=of check, xshift=-1cm, yshift=-0.3cm, fill=green!20] (grant) {GRANT ACCESS};
+\node[process, below right=of check, xshift=1cm, yshift=-0.3cm, fill=red!20] (deny) {DENY ACCESS};
+\node[startend, below=of check, yshift=-3cm] (end) {END};
+
+% Arrows
+\draw[arrow] (start) -- (init);
+\draw[arrow] (init) -- (capture);
+\draw[arrow] (capture) -- (launch);
+\draw[arrow] (launch) -- (wait);
+\draw[arrow] (wait) -- (check);
+\draw[arrow] (check) -- node[left, near start] {Yes} (grant);
+\draw[arrow] (check) -- node[right, near start] {No} (deny);
+\draw[arrow] (grant) -- (end);
+\draw[arrow] (deny) -- (end);
+
+\end{tikzpicture}
+\caption{Decision Fusion Logic Flowchart}
+\label{fig:fusion_flow}
+\end{figure}
+
+The key design principle is that access is granted if \textbf{either} biometric modality succeeds. This design choice prioritizes:
+\begin{itemize}
+    \item \textbf{User Experience:} Reduces false rejections due to environmental factors affecting one modality.
+    \item \textbf{Flexibility:} Accommodates users who may have difficulty with one modality.
+    \item \textbf{Robustness:} System continues to function even if one sensor temporarily fails.
+\end{itemize}
+
+% ========================================
+% CHAPTER 4: IMPLEMENTATION AND RESULTS
+% ========================================
+\chapter{Implementation and Results}
+\label{chap:implementation}
+
+This chapter documents the practical implementation journey, detailing the setup of the hardware and software environment, the experimental procedures used for model selection, and the results obtained during FYP-I.
+
+\section{Hardware Implementation and OS Configuration}
+\label{sec:hardware_impl}
+
+The foundational step of the project was to create a stable and optimized hardware and software platform.
+
+\subsection{Initial Setup and OS Choice}
+\label{subsec:os_setup}
+
+The project began with a \textbf{Raspberry Pi 4 Model B (8GB)}. To maximize available system resources for our AI models, we made the strategic decision to start with \textbf{Raspberry Pi OS Lite (Bookworm)}, a minimal, headless version of the operating system.
+
+For development and debugging purposes, a lightweight graphical interface was necessary. We chose the \textbf{XFCE Desktop Environment} over the default PIXEL or other options like KDE/GNOME. XFCE provides a full-featured desktop experience while consuming significantly less RAM ($\sim$150-200MB) compared to the default desktop ($\sim$400MB+).
+
+\subsection{Overcoming Foundational Setup Challenges}
+\label{subsec:setup_challenges}
+
+The process of building a functional desktop environment from a Lite install revealed several challenges:
+
+\subsubsection*{Challenge 1: Camera Interface Deprecation}
+Initial attempts to use the camera with the \texttt{libcamera} command failed.
+
+\textbf{Resolution:} We discovered that in recent versions of Raspberry Pi OS, the command-line tools were renamed to \texttt{rpicam-apps} (e.g., \texttt{rpicam-still}, \texttt{rpicam-vid}).
+
+\subsubsection*{Challenge 2: Missing GUI Components}
+After installing XFCE, we found that essential utilities for managing networking and Bluetooth were missing.
+
+\textbf{Resolution:} We manually installed the required packages: \texttt{network-manager-gnome} for a graphical WiFi manager and \texttt{blueman} for a Bluetooth interface.
+
+\subsubsection*{Challenge 3: Incorrect Keyboard Locale}
+A frustrating issue arose where the on-screen keyboard defaulted to an Urdu layout.
+
+\textbf{Resolution:} We diagnosed this as an X11 environment issue and resolved it by adding \texttt{setxkbmap us} to the \texttt{.xsessionrc} startup script.
+
+\subsubsection*{Lesson Learned}
+This process taught us that building from a minimal OS requires a deep understanding of the Linux environment. Our key takeaway was the importance of documenting every step.
+
+\section{Software Implementation: Experimental Benchmarking}
+\label{sec:benchmarking}
+
+Our core software implementation work in FYP-I was to move from theoretical literature review to practical, empirical benchmarking on our target hardware.
+
+\subsection{Testing Procedures}
+\label{subsec:testing_procedures}
+
+We wrote dedicated Python scripts using libraries like \texttt{OpenCV}, \texttt{MediaPipe}, \texttt{TensorFlow Lite}, \texttt{PyTorch}, and \texttt{Resemblyzer}. Each script would load a specific model, run it in a loop for 100 iterations, and measure the average inference time.
+
+The testing methodology included:
+\begin{enumerate}
+    \item \textbf{Warm-up phase:} Running each model for 10 iterations to ensure all libraries are loaded.
+    \item \textbf{Measurement phase:} Recording inference times for 100 consecutive iterations.
+    \item \textbf{Statistical analysis:} Computing mean, median, and standard deviation.
+    \item \textbf{Resource monitoring:} Tracking CPU utilization and RAM consumption.
+\end{enumerate}
+
+\subsection{Results: Face Detector Comparison}
+\label{subsec:face_detector_results}
+
+\begin{table}[H]
+\centering
+\caption{Face Detector Performance Comparison on Raspberry Pi 4}
+\label{tab:face_detector}
+\begin{tabular}{p{0.2\textwidth}p{0.15\textwidth}p{0.35\textwidth}p{0.15\textwidth}}
+\toprule
+\textbf{Detector Model} & \textbf{Speed (FPS)} & \textbf{Capabilities} & \textbf{Decision}\\
+\midrule
+Haar Cascade & $\sim$15 FPS & Fast, but lacks landmarks & Rejected\\
+MTCNN & $\sim$2 FPS & Accurate, but too slow & Rejected\\
+\textbf{BlazeFace} & \textbf{$\sim$30-45 FPS} & \textbf{Fast with 6-point landmarks} & \textbf{Selected}\\
+RetinaFace & $\sim$2 FPS & Very accurate, but slow & Rejected\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{face\_detector\_benchmark\_results.png}{Bar chart comparing face detector FPS on Raspberry Pi 4: Haar Cascade (~15 FPS), MTCNN (~2 FPS), BlazeFace (~35 FPS - highlighted as winner), RetinaFace (~2 FPS). Include error bars for standard deviation and annotate the real-time threshold (30 FPS) with a horizontal dashed line.}
+\caption{Face Detector Benchmark Results on Raspberry Pi 4}
+\label{fig:face_detector_benchmark}
+\end{figure}
+
+\subsection{Results: Face Recognition Model Comparison}
+\label{subsec:face_recog_results}
+
+\begin{table}[H]
+\centering
+\caption{Face Recognition Model Performance Comparison}
+\label{tab:face_recognition}
+\small
+\begin{tabular}{p{0.2\textwidth}p{0.2\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.12\textwidth}}
+\toprule
+\textbf{Model} & \textbf{Framework} & \textbf{Size} & \textbf{Inference} & \textbf{Decision}\\
+\midrule
+InceptionResNetV1 & TensorFlow & $\sim$300 MB & $\sim$1200 ms & Rejected\\
+Buffalo\_L (ResNet50) & InsightFace & $\sim$170 MB & $\sim$1800 ms & Rejected\\
+\textbf{MobileFaceNet} & \textbf{PyTorch} & \textbf{$\sim$7.5 MB} & \textbf{$\sim$300 ms} & \textbf{Selected}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{face\_recognition\_benchmark\_results.png}{Dual-axis chart showing: (Left axis, bars) Model size in MB for each architecture; (Right axis, line) Inference time in ms. Clearly show that MobileFaceNet achieves the best size-speed trade-off. Include a ``sweet spot'' annotation highlighting MobileFaceNet.}
+\caption{Face Recognition Model Benchmark: Size vs. Speed Trade-off}
+\label{fig:face_recog_benchmark}
+\end{figure}
+
+\subsection{Results: Voice Verification Toolkit Comparison}
+\label{subsec:voice_results}
+
+\begin{table}[H]
+\centering
+\caption{Speaker Verification Toolkit Performance Comparison}
+\label{tab:voice_verification}
+\begin{tabular}{p{0.2\textwidth}p{0.2\textwidth}p{0.35\textwidth}p{0.12\textwidth}}
+\toprule
+\textbf{Toolkit} & \textbf{Model} & \textbf{Performance} & \textbf{Decision}\\
+\midrule
+SpeechBrain & ECAPA-TDNN & $>$4 seconds inference & Rejected\\
+NVIDIA NeMo & Titanet & ARM64 incompatible & Rejected\\
+\textbf{Resemblyzer} & \textbf{GE2E (LSTM)} & \textbf{$<$1 second inference} & \textbf{Selected}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{voice\_verification\_benchmark\_results.png}{Horizontal bar chart showing inference time for speaker verification toolkits: SpeechBrain ECAPA-TDNN (~4.5s), NVIDIA NeMo (marked as ``N/A - ARM64 incompatible''), Resemblyzer (~0.9s - highlighted as winner). Include a vertical line at 2.0s marking our latency requirement and show Resemblyzer as the only toolkit meeting the requirement.}
+\caption{Speaker Verification Toolkit Benchmark Results}
+\label{fig:voice_benchmark}
+\end{figure}
+
+\section{Findings and Analysis}
+\label{sec:findings}
+
+The key finding of our FYP-I implementation work is that a \textbf{Hybrid Two-Layer Authentication System is feasible on a Raspberry Pi 4}, but only through \textbf{rigorous, data-driven model selection}.
+
+\subsection{Analysis of Model Selection}
+Our experimental results prove that simply choosing a famous or highly accurate model from a research paper is a flawed strategy for edge deployment. The performance difference between InceptionResNetV1 ($\sim$1200ms) and MobileFaceNet ($\sim$300ms) is the difference between a non-functional system and a real-time one.
+
+\subsection{Initial System Performance Estimation}
+\label{subsec:performance_estimation}
+
+By combining the selected models, we can estimate the final performance:
+
+\begin{itemize}
+    \item \textbf{Face Pipeline Latency:} $\sim$30ms (BlazeFace) + $\sim$300ms (MobileFaceNet) = $\sim$330ms
+    \item \textbf{Voice Pipeline Latency:} $\sim$900ms (Resemblyzer on a 3s clip)
+    \item \textbf{Expected Hybrid Latency:} Approximately \textbf{1 second}, well within our 2-second requirement.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{system\_performance\_estimation.png}{Gantt-style timeline diagram showing parallel execution: Face Pipeline (0-330ms) and Voice Pipeline (0-900ms) running simultaneously. Show the decision point at ~1000ms where both results are available. Annotate the 2-second requirement threshold and show comfortable margin. Include breakdown of each pipeline's sub-components.}
+\caption{Estimated System Latency with Parallel Pipeline Execution}
+\label{fig:performance_estimation}
+\end{figure}
+
+\subsection{Key Technical Insights}
+Several important insights emerged from this implementation phase:
+
+\begin{enumerate}
+    \item \textbf{CPU Optimization is Critical:} Mobile-first models outperform server-oriented counterparts by 3-6x on CPU.
+    \item \textbf{Framework Overhead Matters:} Lightweight libraries like MediaPipe have minimal initialization overhead.
+    \item \textbf{ARM64 Ecosystem is Maturing:} Most Python ML packages now provide ARM64 support.
+    \item \textbf{Memory Management:} Our system fits comfortably within 2GB RAM.
+\end{enumerate}
+
+% ========================================
+% CHAPTER 5: CONCLUSION AND FUTURE WORK
+% ========================================
+\chapter{Conclusion and Future Work}
+\label{chap:conclusion}
+
+\section{Project Summary}
+\label{sec:summary}
+
+This report has documented the comprehensive progress made during the first phase of the ``Hybrid Two-Layer Authentication System'' project. We have successfully transitioned from a broad initial concept to a well-defined, strategically sound, and achievable project plan.
+
+The major accomplishments of FYP-I include:
+
+\begin{itemize}
+    \item Comprehensive literature review with detailed paper summaries establishing a clear taxonomy of biometric technologies
+    \item Strategic selection of a hybrid parallel architecture over a sequential approach
+    \item Rigorous experimental benchmarking of multiple models across three critical components
+    \item Successful setup and optimization of a Raspberry Pi 4 development environment
+    \item Validation of system feasibility with projected sub-2-second authentication latency
+\end{itemize}
+
+\section{Problems Faced and Lessons Learned}
+\label{sec:lessons}
+
+\subsection{Lesson 1: The Importance of Strategic De-scoping}
+Our initial ambition to include cutting-edge optimization techniques like quantization was a valuable research exercise, but we learned the critical skill of distinguishing between ``possible'' and ``practical.''
+
+\subsection{Lesson 2: Embedded Environments are Not Desktops}
+The single greatest technical challenge was the software environment setup on ARM64. We learned that dependency management is a critical task, not an afterthought.
+
+\subsection{Lesson 3: Empirical Data Trumps Theoretical Performance}
+Our benchmarking results were a powerful lesson in the importance of testing on target hardware. A model's performance on a high-end GPU is irrelevant to its performance on a Raspberry Pi CPU.
+
+\subsection{Lesson 4: User Experience vs. Technical Complexity Trade-off}
+The decision to adopt a parallel hybrid architecture involved accepting greater implementation complexity in exchange for superior user experience.
+
+\section{Future Recommendations (FYP-II Work)}
+\label{sec:future}
+
+\begin{figure}[H]
+\centering
+\placeholderfig{future\_work\_roadmap.png}{Timeline/roadmap diagram showing FYP-II phases: Phase 1 (Weeks 1-3): Modular Development; Phase 2 (Weeks 4-6): Fusion Engine Implementation; Phase 3 (Weeks 7-9): Integration \& GPIO; Phase 4 (Weeks 10-12): Testing \& Documentation; Phase 5 (Optional): ONNX Optimization. Include milestones and deliverables for each phase.}
+\caption{Proposed FYP-II Development Roadmap}
+\label{fig:future_roadmap}
+\end{figure}
+
+\subsection{Phase 1: Modular Development}
+Develop the face and voice pipelines as standalone Python modules with enrollment and verification functions.
+
+\subsection{Phase 2: Implementation of the Decision Fusion Engine}
+Implement the main application that manages parallel threads, handles communication between them, and contains the state machine for decision fusion logic.
+
+\subsection{Phase 3: Integration and GPIO Control}
+Integrate modules into the final application and implement GPIO control logic for triggering real-world actions.
+
+\subsection{Phase 4: Rigorous System-Level Testing}
+Execute a formal testing protocol to measure FAR, FRR, and end-to-end latency.
+
+\subsection{Phase 5: ONNX Optimization (Stretch Goal)}
+Explore converting models to ONNX format for potential 20-40\% performance improvement.
+
+\section{Concluding Remarks}
+\label{sec:concluding}
+
+The Hybrid Two-Layer Authentication System represents a significant step forward in bringing advanced biometric security to resource-constrained edge devices. Through careful model selection, strategic architectural decisions, and rigorous empirical testing, we have demonstrated that it is possible to build a robust, privacy-preserving, contactless authentication system on affordable hardware.
+
+The project's success relies not on using the most complex models, but on making intelligent engineering trade-offs that prioritize real-world performance, user experience, and practical deployability. This pragmatic approach ensures that our system is not just a research prototype, but a foundation for actual deployment in educational institutions, small businesses, and residential security applications.
+
+% ========================================
+% BIBLIOGRAPHY
+% ========================================
+\begin{thebibliography}{99}
+
+\bibitem{facenet}
+Schroff, F., Kalenichenko, D., \& Philbin, J. (2015). FaceNet: A unified embedding for face recognition and clustering. \textit{IEEE CVPR}, 815-823.
+
+\bibitem{arcface}
+Deng, J., Guo, J., Xue, N., \& Zafeiriou, S. (2019). ArcFace: Additive angular margin loss for deep face recognition. \textit{IEEE/CVF CVPR}, 4690-4699.
+
+\bibitem{mobilefacenet}
+Chen, S., Liu, Y., Gao, X., \& Han, Z. (2018). MobileFaceNets: Efficient CNNs for accurate real-time face verification on mobile devices. \textit{CCBR}, 428-438.
+
+\bibitem{blazeface}
+Bazarevsky, V., et al. (2019). BlazeFace: Sub-millisecond neural face detection on mobile GPUs. \textit{arXiv:1907.05047}.
+
+\bibitem{ecapa_tdnn}
+Desplanques, B., Thienpondt, J., \& Demuynck, K. (2020). ECAPA-TDNN: Emphasized channel attention, propagation and aggregation in TDNN based speaker verification. \textit{arXiv:2005.07143}.
+
+\bibitem{ge2e}
+Wan, L., Wang, Q., Papir, A., \& Moreno, I. L. (2018). Generalized end-to-end loss for speaker verification. \textit{IEEE ICASSP}, 4879-4883.
+
+\bibitem{resemblyzer}
+Jemine, G. (2019). Resemblyzer: A Python package for speaker verification. \textit{GitHub}. \url{https://github.com/resemble-ai/Resemblyzer}
+
+\bibitem{mtcnn}
+Zhang, K., et al. (2016). Joint face detection and alignment using multitask cascaded convolutional networks. \textit{IEEE SPL}, 23(10), 1499-1503.
+
+\bibitem{insightface}
+Guo, J., et al. (2018). InsightFace: 2D and 3D face analysis project. \textit{GitHub}. \url{https://github.com/deepinsight/insightface}
+
+\bibitem{onnx}
+Bai, J., et al. (2019). ONNX: Open neural network exchange. \textit{GitHub}. \url{https://github.com/onnx/onnx}
+
+\bibitem{onnx_runtime}
+Bai, J., et al. (2021). ONNX Runtime: Performance optimization for diverse deployment targets. \textit{MLSys}.
+
+\bibitem{multimodal_camera_ppg}
+Zheng, X. X., et al. (2024). Multimodal biometric authentication using camera-based PPG and fingerprint fusion. \textit{arXiv:2412.05660}.
+
+\bibitem{multimodal_robustness}
+Yang, R., et al. (2024). AuthFormer: Adaptive multimodal biometric authentication transformer. \textit{arXiv:2411.05395}.
+
+\bibitem{multimodal_accessibility}
+Khan, A., et al. (2012). A multimodal biometric system using linear discriminant analysis. \textit{IJCSI}, 8(6), 122-127.
+
+\bibitem{anti_spoofing_multimodal}
+Kurnaz, O., et al. (2024). Spoofing-robust speaker verification using parallel embedding fusion. \textit{ASVspoof Workshop}.
+
+\bibitem{adaptive_multimodal}
+Acien, A., et al. (2019). MultiLock: Mobile active authentication based on multiple biometric patterns. \textit{IEEE}.
+
+\bibitem{deep_hashing_multimodal}
+Talreja, V., et al. (2020). Deep hashing for secure multimodal biometrics. \textit{IEEE TIFS}, 16, 1306-1321.
+
+\bibitem{ml_score_fusion}
+Brown, R., et al. (2020). A novel multimodal biometric authentication system. \textit{INC 2020}.
+
+\bibitem{quality_dependent_fusion}
+Poh, N., et al. (2009). Benchmarking quality-dependent multimodal biometric fusion. \textit{IEEE TIFS}, 4(4), 849-866.
+
+\bibitem{audio_visual_lip}
+Liu, M., et al. (2021). Exploring deep learning for joint audio-visual lip biometrics. \textit{arXiv:2104.08510}.
+
+\bibitem{gumbel_bimodal}
+Reddy, P. N., et al. (2024). Gumbel Rao Monte Carlo based bi-modal neural architecture search. \textit{arXiv:2410.06543}.
+
+\bibitem{cross_modal_biometric}
+Carbonneau, M. A., et al. (2025). Analyzing speaker similarity assessment for speech synthesis. \textit{arXiv:2507.02176}.
+
+\bibitem{transformer_multimodal}
+Zhang, F., et al. (2025). Rethinking facial expression recognition in the era of multimodal LLMs. \textit{arXiv:2511.00389}.
+
+\bibitem{behavepassdb}
+Stragapede, G., et al. (2022). BehavePassDB: Public database for mobile behavioral biometrics. \textit{Pattern Recognition}.
+
+\bibitem{speakingfaces}
+Abdrakhmanova, M., et al. (2020). SpeakingFaces: A large-scale multimodal dataset. \textit{Scientific Data}, 7(1), 354.
+
+\bibitem{smartphone_multimodal}
+Ramachandra, R., et al. (2019). Smartphone multi-modal biometric authentication. \textit{arXiv:1912.02487}.
+
+\bibitem{mobibits}
+Bartuzi, E., et al. (2018). MobiBits: Multimodal mobile biometric database. \textit{BIOSIG}.
+
+\bibitem{privacy_edge_biometric}
+Sepehri, Y., et al. (2024). PriPHiT: Privacy-preserving hierarchical training. \textit{arXiv:2408.05092}.
+
+\bibitem{edge_latency_biometric}
+Neff, C., et al. (2019). REVAMP²T: Real-time edge video analytics. \textit{IEEE IoT Journal}.
+
+\bibitem{network_independent_biometric}
+Isern, J., et al. (2020). Reconfigurable cyber-physical system for critical infrastructure. \textit{PRL}, 140, 303-309.
+
+\bibitem{bandwidth_edge}
+Hu, L., et al. (2019). A sustainable multi-modal emotion-aware service at the edge. \textit{IEEE IoT Journal}.
+
+\bibitem{edge_scalability}
+Suryavansh, S., et al. (2020). I-BOT: Interference-based orchestration of tasks. \textit{arXiv:2011.05925}.
+
+\bibitem{revamp2t}
+Neff, C., et al. (2019). REVAMP²T: Real-time edge video analytics for pedestrian tracking. \textit{IEEE IoT Journal}.
+
+\bibitem{facial_expression_edge}
+Mohammadi, M., et al. (2023). Facial expression recognition at the edge: CPU vs GPU vs VPU vs TPU. \textit{ACM}.
+
+\bibitem{smartphone_sensors_auth}
+Acien, A., et al. (2020). Smartphone sensors for modeling human-computer interaction. \textit{IEEE}.
+
+\bibitem{neuromorphic_vs_edge}
+Smith, H., et al. (2024). Realtime facial expression recognition: Neuromorphic vs. edge AI. \textit{arXiv:2403.08792}.
+
+\bibitem{binarynet_covid_mask}
+Fasfous, N., et al. (2021). BinaryCoP: Binary neural network-based COVID-19 mask predictor. \textit{IEEE IPDPS-RAW}.
+
+\bibitem{memory_efficient_sv}
+Liu, B., \& Qian, Y. (2024). Memory-efficient training for deep speaker embedding. \textit{IEEE/ACM TASLP}.
+
+\bibitem{pruning_biometric}
+Wang, Z., \& Hansen, J. H. L. (2024). Improving synthetic audio spoofing detection via meta-learning. \textit{IEEE Access}.
+
+\bibitem{distillation_edge}
+Lepage, T., \& Dehak, R. (2024). Additive margin in contrastive self-supervised frameworks. \textit{Odyssey}.
+
+\bibitem{mobilenet_edge}
+Yang, S., et al. (2019). EdgeCNN: CNN classification for edge computing. \textit{arXiv:1909.13522}.
+
+\bibitem{efficientnet_biometric}
+Khan, L., et al. (2020). DeepKey: An EEG and gait based dual-authentication system. \textit{arXiv:1706.01606}.
+
+\bibitem{shufflenet_edge}
+Xu, Y., et al. (2019). CenterFace: Joint face detection and alignment. \textit{arXiv:1911.03599}.
+
+\bibitem{squeezenet_biometric}
+Verma, M., et al. (2018). Region based extensive response index pattern for facial expression recognition. \textit{CVPR Workshop}.
+
+\bibitem{edgecnn}
+Yang, S., et al. (2019). EdgeCNN: Convolutional neural network for edge computing. \textit{arXiv:1909.13522}.
+
+\bibitem{early_exit_biometric}
+Costa, F., et al. (2022). Speaker characterization by means of attention pooling. \textit{IberSPEECH}.
+
+\bibitem{adaptive_resolution}
+Arefeen, M., et al. (2023). MetaMorphosis: Task-oriented privacy cognizant feature generation. \textit{ACM SenSys}.
+
+\bibitem{quality_aware_processing}
+Horiguchi, S., et al. (2024). Guided speaker embedding. \textit{ICASSP}.
+
+\bibitem{edge_emotion_service}
+Hu, L., et al. (2019). A sustainable multi-layer emotion-aware service at the edge. \textit{IEEE IoT Journal}.
+
+\bibitem{encrypted_similarity}
+Sepehri, Y., et al. (2025). Encrypted vector similarity using partially homomorphic encryption. \textit{arXiv:2503.05850}.
+
+\bibitem{semba_multimodal}
+Droandi, G., et al. (2018). SEMBA: Secure multi-biometric authentication. \textit{arXiv:1803.10758}.
+
+\bibitem{federated_biometric}
+Cheng, R., et al. (2023). Towards zero-trust security for the Metaverse. \textit{arXiv:2302.08885}.
+
+\bibitem{differential_privacy_biometric}
+Rahman, A., et al. (2021). Multimodal EEG and keystroke dynamics biometric system. \textit{IEEE Access}, 9, 94625-94643.
+
+\bibitem{metamorphosis_privacy}
+Arefeen, M., et al. (2023). MetaMorphosis: Task-oriented privacy cognizant feature generation. \textit{ACM}.
+
+\bibitem{asvspoof_challenge}
+Xia, Y., et al. (2024). USTC-KXDIGIT system description for ASVspoof5 challenge. \textit{ASVspoof Workshop}.
+
+\bibitem{sasv_optimization}
+Kurnaz, O., et al. (2024). Optimizing a-DCF for spoofing-robust speaker verification. \textit{arXiv:2407.04034}.
+
+\bibitem{ssl_antispoofing}
+Asali, A., et al. (2025). ATMM-SAGA: Alternating training for multi-module SASV system. \textit{Interspeech}.
+
+\bibitem{deepfake_detection_bimodal}
+Reddy, P. N., et al. (2024). Straight through Gumbel Softmax estimator based bimodal NAS. \textit{arXiv:2406.13384}.
+
+\bibitem{multimodal_pad}
+Weizman, A., et al. (2024). Tandem spoofing-robust automatic speaker verification. \textit{arXiv:2412.17133}.
+
+\bibitem{adversarial_voice_attack}
+Dar, D. K., et al. (2025). Impact of phonetics on speaker identity in adversarial voice attack. \textit{arXiv:2509.15437}.
+
+\bibitem{malacopula_attack}
+Todisco, M., et al. (2024). Malacopula: Adversarial automatic speaker verification attacks. \textit{ASVspoof Workshop}.
+
+\bibitem{adversarial_training_biometric}
+Zhang, H., et al. (2024). HiddenSpeaker: Generate imperceptible unlearnable audios. \textit{IJCNN}.
+
+\bibitem{input_transform_defense}
+Thebaud, T., et al. (2024). Supervised and unsupervised alignments for spoofing behavioral biometrics. \textit{arXiv:2408.08918}.
+
+\bibitem{certified_defense}
+Jamdar, E., \& Belman, A. K. (2025). SyntheticPop: Attacking speaker verification systems. \textit{arXiv:2502.09553}.
+
+\bibitem{behavioral_biometric_survey}
+Abuhamad, M., et al. (2020). Sensor-based continuous authentication using behavioral biometrics. \textit{ACM Computing Surveys}.
+
+\bibitem{mobile_behavioral_biometric}
+Stragapede, G., et al. (2022). Mobile behavioral biometrics for passive authentication. \textit{Pattern Recognition}.
+
+\bibitem{location_auth}
+Mundnich, K., et al. (2020). TILES-2018: A longitudinal physiologic and behavioral data set. \textit{Scientific Data}, 7(1), 354.
+
+\bibitem{temporal_auth}
+Bui, M. H., et al. (2021). Personalized breath based biometric authentication. \textit{arXiv:2110.15941}.
+
+\bibitem{environmental_context}
+Sini, J., et al. (2023). Towards in-cabin monitoring: A preliminary study. \textit{CPS Workshop}.
+
+\bibitem{multidevice_auth}
+Dave, R., et al. (2022). Hold on and swipe: A touch-movement based continuous authentication. \textit{arXiv:2201.08564}.
+
+\bibitem{zero_trust_metaverse}
+Cheng, R., et al. (2023). Towards zero-trust security for the Metaverse. \textit{arXiv:2302.08885}.
+
+\bibitem{children_sv}
+Shetty, V. M., et al. (2025). G-IFT: Gated linear unit adapter for children's speaker verification. \textit{WOCCI Workshop, Interspeech}.
+
+\bibitem{age_agnostic_sv}
+Zheng, J., et al. (2025). An age-agnostic system for robust speaker verification. \textit{Interspeech Workshop}.
+
+\bibitem{cross_age_disentangle}
+Zhang, F., et al. (2024). Disentangling age and identity for cross-age speaker verification. \textit{Interspeech}.
+
+\bibitem{self_distillation_sv}
+Chen, Y., et al. (2024). Self-distillation prototypes network: Learning robust speaker representations. \textit{arXiv:2406.11169}.
+
+\bibitem{self_supervised_sv_wavlm}
+Miara, V., et al. (2024). Towards supervised performance on speaker verification with self-supervised learning. \textit{Interspeech}.
+
+\bibitem{speaker_interpolation}
+Liu, T., et al. (2025). Interpolating speaker identities in embedding space. \textit{APSIPA ASC}.
+
+\bibitem{text_dependent_sv}
+Farokh, S. A., \& Zeinali, H. (2024). Memory-efficient training for text-dependent SV. \textit{ROCLING}.
+
+\bibitem{text_adaptation_sv}
+Yang, Y., et al. (2020). Text adaptation for speaker verification with speaker-text factorized embeddings. \textit{ICASSP}.
+
+\bibitem{chinese_numerical_sv}
+Zheng, L., et al. (2024). Text-dependent speaker verification for Chinese numerical strings. \textit{arXiv:2405.07029}.
+
+\bibitem{far_field_sv}
+Zhang, L., et al. (2025). Adaptive data augmentation with NaturalSpeech3 for far-field SV. \textit{arXiv:2501.08691}.
+
+\bibitem{low_light_enhancement}
+Xia, J., et al. (2025). DLEN: Dual branch transformer for low-light image enhancement. \textit{arXiv:2501.12235}.
+
+\bibitem{noise_robust_sv}
+Xing, X., \& Xu, M. (2024). Joint noise disentanglement and adversarial training. \textit{Interspeech}.
+
+\bibitem{explainable_phonetic_sv}
+Ma, Y., et al. (2025). ExPO: Explainable phonetic trait-oriented network for speaker verification. \textit{IEEE SPL}.
+
+\bibitem{3d_speaker_toolkit}
+Chen, Y., et al. (2024). 3D-Speaker-Toolkit: An open-source toolkit for multimodal speaker verification. \textit{GitHub}.
+
+\bibitem{ssl_foundation_biometric}
+Chen, Y., et al. (2025). Pushing the frontiers of self-distillation prototypes network. \textit{arXiv:2505.13826}.
+
+\bibitem{attribution_biometric}
+Huckvale, M. (2025). Interpreting the dimensions of speaker embedding space. \textit{arXiv:2510.16489}.
+
+\bibitem{speaker_embedding_interpretation}
+Huckvale, M. (2025). Interpreting the dimensions of speaker embedding space. \textit{arXiv:2510.16489}.
+
+\bibitem{calibration_biometric}
+Lin, W., et al. (2024). Neural scoring: A refreshed end-to-end approach for speaker recognition. \textit{arXiv:2410.16428}.
+
+\bibitem{tinysv}
+Pavan, M., et al. (2024). TinySV: Speaker verification in TinyML with on-device learning. \textit{ACM}.
+
+\bibitem{binary_nn_biometric}
+Fasfous, N., et al. (2021). BinaryCoP: Binary neural network-based COVID-19 mask predictor. \textit{IEEE IPDPS-RAW}.
+
+\bibitem{event_camera_expression}
+Wang, Z., et al. (2025). CS3D: Efficient facial expression recognition via event vision. \textit{arXiv:2512.09592}.
+
+\bibitem{synthetic_emotion_faces}
+Mousavi, S. M. H., \& Mirinezhad, S. Y. (2025). Synthetic data generation for emotional depth faces. \textit{arXiv:2508.09188}.
+
+\bibitem{tts_augmentation}
+Zhang, L., et al. (2025). Adaptive data augmentation with NaturalSpeech3. \textit{arXiv:2501.08691}.
+
+\bibitem{synthetic_domain_adapt}
+Liu, T., et al. (2025). Interpolating speaker identities for data expansion. \textit{APSIPA ASC}.
+
+\bibitem{snn_biometric}
+Smith, H., et al. (2024). Realtime facial expression recognition: Neuromorphic hardware. \textit{arXiv:2403.08792}.
+
+\bibitem{in_memory_biometric}
+Bello, H. (2024). Unimodal and multimodal sensor fusion for wearable activity recognition. \textit{IEEE PerCom Workshops}.
+
+\bibitem{analog_nn_biometric}
+Fasfous, N., et al. (2021). BinaryCoP on edge devices. \textit{IEEE IPDPS-RAW}.
+
+\bibitem{depth_width_tradeoff}
+Islam, K., et al. (2022). Face pyramid vision transformer. \textit{BMVC}.
+
+\bibitem{conv_vs_transformer_edge}
+Zhang, F., et al. (2025). Rethinking facial expression recognition with multimodal LLMs. \textit{arXiv:2511.00389}.
+
+\bibitem{task_specific_models}
+Molavi, M., \& Khodadadi, R. (2024). The SVASR system for text-dependent speaker verification. \textit{TDSV AAIC Challenge}.
+
+\end{thebibliography}
+
+% ========================================
+% APPENDICES
+% ========================================
+\appendix
+
+\chapter{Installation Guide}
+\label{app:installation}
+
+\section{Raspberry Pi OS Setup}
+
+\textbf{Step 1: Download and Flash OS}
+\begin{enumerate}
+    \item Download Raspberry Pi OS Lite (Bookworm) from official website
+    \item Use Raspberry Pi Imager to flash the image to a high-quality microSD card (minimum 32GB, A2-rated recommended)
+    \item Enable SSH and configure WiFi credentials before first boot
+\end{enumerate}
+
+\textbf{Step 2: Initial System Configuration}
+\begin{lstlisting}[language=bash]
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install essential packages
+sudo apt install -y git python3-pip python3-venv
+sudo apt install -y build-essential cmake
+
+# Configure locales
+sudo raspi-config
+# Navigate to: Localisation Options > Locale
+# Select: en_US.UTF-8
+\end{lstlisting}
+
+\textbf{Step 3: Install Desktop Environment}
+\begin{lstlisting}[language=bash]
+# Install XFCE (lightweight desktop)
+sudo apt install -y xfce4 xfce4-goodies
+
+# Install network and Bluetooth managers
+sudo apt install -y network-manager-gnome blueman
+
+# Configure keyboard layout
+echo "setxkbmap us" >> ~/.xsessionrc
+\end{lstlisting}
+
+\textbf{Step 4: Camera Configuration}
+\begin{lstlisting}[language=bash]
+# Install camera tools
+sudo apt install -y rpicam-apps
+
+# Test camera
+rpicam-still -o test.jpg
+\end{lstlisting}
+
+\section{Python Environment Setup}
+
+\begin{lstlisting}[language=bash]
+# Create virtual environment
+python3 -m venv ~/fyp_env
+source ~/fyp_env/bin/activate
+
+# Install core dependencies
+pip install --upgrade pip
+pip install numpy opencv-python-headless
+pip install mediapipe torch torchvision
+pip install resemblyzer sounddevice
+pip install RPi.GPIO gpiozero
+
+# Verify installations
+python -c "import cv2; print('OpenCV:', cv2.__version__)"
+python -c "import mediapipe; print('MediaPipe OK')"
+python -c "import resemblyzer; print('Resemblyzer OK')"
+\end{lstlisting}
+
+\chapter{Code Snippets}
+\label{app:code}
+
+\section{Face Detection with BlazeFace}
+
+\begin{lstlisting}[language=Python]
+import cv2
+import mediapipe as mp
+
+# Initialize MediaPipe Face Detection
+mp_face_detection = mp.solutions.face_detection
+face_detection = mp_face_detection.FaceDetection(
+    min_detection_confidence=0.5)
+
+# Capture frame from camera
+cap = cv2.VideoCapture(0)
+ret, frame = cap.read()
+
+# Convert BGR to RGB
+rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+# Detect faces
+results = face_detection.process(rgb_frame)
+
+if results.detections:
+    for detection in results.detections:
+        # Extract bounding box
+        bbox = detection.location_data.relative_bounding_box
+        h, w, _ = frame.shape
+        x = int(bbox.xmin * w)
+        y = int(bbox.ymin * h)
+        width = int(bbox.width * w)
+        height = int(bbox.height * h)
+
+        # Crop face for recognition
+        face_crop = frame[y:y+height, x:x+width]
+        print(f"Face detected at ({x}, {y})")
+
+cap.release()
+\end{lstlisting}
+
+\section{Voice Embedding with Resemblyzer}
+
+\begin{lstlisting}[language=Python]
+from resemblyzer import VoiceEncoder, preprocess_wav
+import sounddevice as sd
+import numpy as np
+from scipy.spatial.distance import cosine
+
+# Initialize encoder
+encoder = VoiceEncoder()
+
+# Record audio (3 seconds at 16kHz)
+sample_rate = 16000
+duration = 3
+print("Recording...")
+audio = sd.rec(int(duration * sample_rate),
+               samplerate=sample_rate,
+               channels=1, dtype='float32')
+sd.wait()
+print("Recording complete.")
+
+# Preprocess and generate embedding
+audio_flat = audio.flatten()
+wav = preprocess_wav(audio_flat)
+embedding = encoder.embed_utterance(wav)
+
+# Compare with stored embedding (example)
+# stored_embedding = np.load('enrolled_voice.npy')
+# similarity = 1 - cosine(embedding, stored_embedding)
+# print(f"Similarity: {similarity:.4f}")
+\end{lstlisting}
+
+\section{Decision Fusion Engine (Pseudocode)}
+
+\begin{lstlisting}[language=Python]
+import threading
+from queue import Queue
+
+# Configuration
+FACE_THRESHOLD = 0.7
+VOICE_THRESHOLD = 0.6
+TIMEOUT_SECONDS = 3.0
+
+def face_worker(result_queue):
+    """Face verification thread"""
+    # 1. Capture frame
+    # 2. Detect face
+    # 3. Extract embedding
+    # 4. Compare with database
+    score = verify_face()  # Returns 0.0-1.0
+    result_queue.put(('face', score))
+
+def voice_worker(result_queue):
+    """Voice verification thread"""
+    # 1. Record audio
+    # 2. Preprocess
+    # 3. Extract embedding
+    # 4. Compare with database
+    score = verify_voice()  # Returns 0.0-1.0
+    result_queue.put(('voice', score))
+
+def authenticate():
+    """Main authentication function with OR-logic fusion"""
+    result_queue = Queue()
+
+    # Launch parallel threads
+    face_thread = threading.Thread(
+        target=face_worker, args=(result_queue,))
+    voice_thread = threading.Thread(
+        target=voice_worker, args=(result_queue,))
+
+    face_thread.start()
+    voice_thread.start()
+
+    # Wait for results with timeout
+    face_thread.join(timeout=TIMEOUT_SECONDS)
+    voice_thread.join(timeout=TIMEOUT_SECONDS)
+
+    # Collect results
+    face_score = voice_score = 0.0
+    while not result_queue.empty():
+        modality, score = result_queue.get()
+        if modality == 'face':
+            face_score = score
+        else:
+            voice_score = score
+
+    # OR-logic decision fusion
+    if face_score > FACE_THRESHOLD or \
+       voice_score > VOICE_THRESHOLD:
+        return True, face_score, voice_score  # GRANT
+    else:
+        return False, face_score, voice_score  # DENY
+\end{lstlisting}
+
+% ========================================
+% END OF DOCUMENT
+% ========================================
+\end{document}

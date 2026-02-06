@@ -1,0 +1,52 @@
+inference time of BUFF S & L
+
+Literature review 
+
+Aik slide, aik hi table before all comparisons having all literature review 
+Vioce &face all RESEARCH papers with their names:
+Blazeface, arcface, ecapatdnn, mobilefacenet, insightface
+what we gained from them
+
+- Detector
+- 
+
+
+methdodolgy:
+Define Methodolgy(In text):
+HArdware selection through research==> Model Trials First on Our own systems(our laptops)
+then ===>> model selection through trials on edge hardware & research
+%%I'll Add Architecture flow.
+
+
+///////I'll move literature review tables (whole section) after methodology.
+
+Order:
+
+1 Intro(Abd)
+2 Problem statement
+3 Objectives
+4 Literature Review(1-2 slides containing only table of research papers.) 
+5 Methodology (given above)
+5-subsection: Hardware Selection 
+5-subsection: Face rec models(ABD)
+
+-----------------------------
+5-subsection: Voice rec models
+Voice all models comparison
+ONNX Conversion(what it is, why Needed to use, what benefits???)
+5-subsection: Speech to Text ASR(OpenAI Whisper)
+6 Software On hardware (pip)
+
+
+--------------------------------
+
+Challenges
+OS CHALLENGE WHICH SELECTED WHY?
+Desktop environment selection?
+Pi power Consumption(sd card corruption, instability)
+Heat dissipation (Proper cooling needed)
+SD-CARD quality
+Headless interaction: VNC,SSH, Camcorder
+camera interface dma 
+Cam operation challenges
+XFCE missing modules

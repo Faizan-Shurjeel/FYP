@@ -1,0 +1,41 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Conceptual Overview of the Hybrid Two-Layer Authentication System}}{2}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Project Alignment with United Nations Sustainable Development Goals}}{5}{figure.caption.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Taxonomy of Biometric Recognition Technologies}}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Complete Facial Recognition Pipeline from Input to Decision}}{8}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual Comparison of Face Detection Methods on Raspberry Pi 4}}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces MobileFaceNet Architecture with Depthwise Separable Convolutions}}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Visualization of ArcFace Angular Margin Loss vs. Standard Softmax}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Taxonomy of Speaker Recognition Models by Complexity and Efficiency}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Generalized End-to-End (GE2E) Loss Training Mechanism}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces ONNX Model Conversion and Optimization Pipeline}}{18}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Key Advantages of Multimodal Biometric Systems}}{20}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Comparison of Multimodal Fusion Strategies at Different Levels}}{22}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Overview of Major Multimodal Biometric Databases}}{25}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Edge vs. Cloud Biometric Processing: Trade-offs and Considerations}}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Edge Hardware Platforms: Performance vs. Power Consumption Trade-offs}}{28}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Model Compression Techniques for Edge Deployment}}{30}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Adaptive Processing Pipeline for Resource-Constrained Environments}}{32}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Privacy and Security Landscape in Biometric Systems}}{33}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Comparison of Privacy-Preserving Techniques for Biometric Authentication}}{35}{figure.caption.28}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Overview of Presentation Attacks and Countermeasures for Biometric Systems}}{37}{figure.caption.29}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Continuous Authentication Lifecycle with Behavioral Biometrics}}{39}{figure.caption.30}%
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Emerging Technology Landscape for Biometric Authentication}}{43}{figure.caption.31}%
+\contentsline {figure}{\numberline {2.21}{\ignorespaces Visualization of Research Gaps Addressed by This Work}}{48}{figure.caption.32}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Comparison of Sequential vs. Parallel Authentication Approaches}}{51}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Hardware Setup: Raspberry Pi 4 with Camera, Microphone, and GPIO Peripherals}}{53}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces High-Level System Architecture}}{54}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Multi-threaded Architecture with Inter-Thread Communication}}{55}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Decision Fusion Logic Flowchart}}{56}{figure.caption.38}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Face Detector Benchmark Results on Raspberry Pi 4}}{60}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Face Recognition Model Benchmark: Size vs. Speed Trade-off}}{61}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Speaker Verification Toolkit Benchmark Results}}{62}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Estimated System Latency with Parallel Pipeline Execution}}{63}{figure.caption.45}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Proposed FYP-II Development Roadmap}}{66}{figure.caption.46}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
